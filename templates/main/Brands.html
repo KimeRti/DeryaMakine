@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Derya Makine - Markalar</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    {% include '_partials/_libaries.html' %}
+
+
+    <style>
+      .brand-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        list-style: none;
+        padding: 0;
+      }
+    
+      .brand {
+        flex-basis: calc(25% - 20px);
+        margin-bottom: 20px;
+      }
+    
+      .brand-img {
+        text-align: center;
+      }
+    
+      .brand-img img {
+        max-width: 100%;
+        height: auto;
+      }
+    
+      .brand-infos p {
+        text-align: center;
+        margin-top: 10px;
+      }
+    
+      .brand-products {
+        text-align: center;
+        margin-top: 10px;
+      }
+    </style>
+    
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+
+<!-- Topbar Start -->
+<div class="container-fluid bg-light p-0">
+  <div class="row gx-0 d-none d-lg-flex">
+      <div class="col-lg-7 px-5 text-start">
+          <div class="h-100 d-inline-flex align-items-center py-3 me-4">
+              <small class="fa fa-map-marker-alt text-primary me-2"></small>
+              <small>İstanbul/Turkey</small>
+          </div>
+          <div class="h-100 d-inline-flex align-items-center py-3">
+              <small class="far fa-clock text-primary me-2"></small>
+              <small>Mon - Fri : 09.00 AM - 09.00 PM</small>
+          </div>
+      </div>
+      <div class="col-lg-5 px-5 text-end">
+          <div class="h-100 d-inline-flex align-items-center py-3 me-4">
+              <small class="fa fa-language text-primary me-2"></small>
+              <small>
+                  <a href="#">English</a> | <a href="#">Türkçe</a>
+              </small>
+          </div>
+          <div class="h-100 d-inline-flex align-items-center py-3">
+              <small class="fa fa-phone-alt text-primary me-2"></small>
+              <small>+90 (212) 544 80 00</small> <small>
+          </div>
+          <div class="h-100 d-inline-flex align-items-center">
+              <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-facebook-f"></i></a>
+              <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-twitter"></i></a>
+              <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-linkedin-in"></i></a>
+              <a class="btn btn-sm-square bg-white text-primary me-0" href=""><i class="fab fa-instagram"></i></a>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+{% include '_partials/_navbar.html' %}
+<!-- Navbar End -->
+
+
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header mb-5 p-0" style="background-image: url(img/banner2.jpg);">
+        <div class="container-fluid page-header-inner py-5">
+            <div class="container text-center">
+                <h1 class="display-3 text-white mb-3 animated slideInDown">Markalar</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-center text-uppercase">
+                        <li class="breadcrumb-item"><a href="index.html">Ana sayfa</a></li>
+                        <li class="breadcrumb-item text-white active" aria-current="page">Markalar</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+
+<!-- Section Start -->
+<div class="container-xxl py-5">
+  <div class="container">
+    <section id="wrapper">
+      <div id="content-wrapper">
+        <section id="main">
+          <h1>Markalar</h1>
+          <ul class="brand-list">
+            <li class="brand">
+              <div class="brand-img"><a href="http://www.derya-makine.com/tr/brand/1-akra"><img src="http://www.derya-makine.com/img/m/1-small_default.jpg" alt="Akra"></a></div>
+              <div class="brand-infos">
+                <p><a href="http://www.derya-makine.com/tr/brand/1-akra">Akra</a></p>
+                
+              </div>
+              <div class="brand-products">
+                <a href="http://www.derya-makine.com/tr/brand/1-akra">0 ürün</a>
+                <a href="http://www.derya-makine.com/tr/brand/1-akra">Ürünleri görüntüle</a>
+              </div>
+            </li>
+                            
+            <li class="brand">
+              <div class="brand-img"><a href="http://www.derya-makine.com/tr/brand/2-derya-makine"><img src="http://www.derya-makine.com/img/m/2-small_default.jpg" alt="Derya Makine"></a></div>
+              <div class="brand-infos">
+                <p><a href="http://www.derya-makine.com/tr/brand/2-derya-makine">Derya Makine</a></p>
+                
+              </div>
+              <div class="brand-products">
+                <a href="http://www.derya-makine.com/tr/brand/2-derya-makine">0 ürün</a>
+                <a href="http://www.derya-makine.com/tr/brand/2-derya-makine">Ürünleri görüntüle</a>
+              </div>
+            </li>
+                            
+            <li class="brand">
+              <div class="brand-img"><a href="http://www.derya-makine.com/tr/brand/3-detex"><img src="http://www.derya-makine.com/img/m/3-small_default.jpg" alt="Detex"></a></div>
+              <div class="brand-infos">
+                <p><a href="http://www.derya-makine.com/tr/brand/3-detex">Detex</a></p>
+                
+              </div>
+              <div class="brand-products">
+                <a href="http://www.derya-makine.com/tr/brand/3-detex">185 ürün</a>
+                <a href="http://www.derya-makine.com/tr/brand/3-detex">Ürünleri görüntüle</a>
+              </div>
+            </li>
+                            
+            <li class="brand">
+              <div class="brand-img"><a href="http://www.derya-makine.com/tr/brand/4-golden-eagle"><img src="http://www.derya-makine.com/img/m/4-small_default.jpg" alt="Golden Eagle"></a></div>
+              <div class="brand-infos">
+                <p><a href="http://www.derya-makine.com/tr/brand/4-golden-eagle">Golden Eagle</a></p>
+                
+              </div>
+              <div class="brand-products">
+                <a href="http://www.derya-makine.com/tr/brand/4-golden-eagle">0 ürün</a>
+                <a href="http://www.derya-makine.com/tr/brand/4-golden-eagle">Ürünleri görüntüle</a>
+              </div>
+            </li>
+                            
+            <li class="brand">
+              <div class="brand-img"><a href="http://www.derya-makine.com/tr/brand/5-groz-beckert"><img src="http://www.derya-makine.com/img/m/5-small_default.jpg" alt="Groz-Beckert"></a></div>
+              <div class="brand-infos">
+                <p><a href="http://www.derya-makine.com/tr/brand/5-groz-beckert">Groz-Beckert</a></p>
+                
+              </div>
+              <div class="brand-products">
+                <a href="http://www.derya-makine.com/tr/brand/5-groz-beckert">15 ürün</a>
+                <a href="http://www.derya-makine.com/tr/brand/5-groz-beckert">Ürünleri görüntüle</a>
+              </div>
+            </li>
+                            
+            <li class="brand">
+              <div class="brand-img"><a href="http://www.derya-makine.com/tr/brand/6-kern-liebers"><img src="http://www.derya-makine.com/img/m/6-small_default.jpg" alt="Kern-Liebers"></a></div>
+              <div class="brand-infos">
+                <p><a href="http://www.derya-makine.com/tr/brand/6-kern-liebers">Kern-Liebers</a></p>
+                
+              </div>
+              <div class="brand-products">
+                <a href="http://www.derya-makine.com/tr/brand/6-kern-liebers">15 ürün</a>
+                <a href="http://www.derya-makine.com/tr/brand/6-kern-liebers">Ürünleri görüntüle</a>
+              </div>
+            </li>
+                            
+            <li class="brand">
+              <div class="brand-img"><a href="http://www.derya-makine.com/tr/brand/7-kluber"><img src="http://www.derya-makine.com/img/m/7-small_default.jpg" alt="Klüber"></a></div>
+              <div class="brand-infos">
+                <p><a href="http://www.derya-makine.com/tr/brand/7-kluber">Klüber</a></p>
+                
+              </div>
+              <div class="brand-products">
+                <a href="http://www.derya-makine.com/tr/brand/7-kluber">2 ürün</a>
+                <a href="http://www.derya-makine.com/tr/brand/7-kluber">Ürünleri görüntüle</a>
+              </div>
+            </li>
+                            
+            <li class="brand">
+              <div class="brand-img"><a href="http://www.derya-makine.com/tr/brand/8-merze"><img src="http://www.derya-makine.com/img/m/8-small_default.jpg" alt="Merze"></a></div>
+              <div class="brand-infos">
+                <p><a href="http://www.derya-makine.com/tr/brand/8-merze">Merze</a></p>
+                
+              </div>
+              <div class="brand-products">
+                <a href="http://www.derya-makine.com/tr/brand/8-merze">0 ürün</a>
+                <a href="http://www.derya-makine.com/tr/brand/8-merze">Ürünleri görüntüle</a>
+              </div>
+            </li>
+                            
+            <li class="brand">
+              <div class="brand-img"><a href="http://www.derya-makine.com/tr/brand/9-milhan"><img src="http://www.derya-makine.com/img/m/9-small_default.jpg" alt="Milhan"></a></div>
+              <div class="brand-infos">
+                <p><a href="http://www.derya-makine.com/tr/brand/9-milhan">Milhan</a></p>
+                
+              </div>
+              <div class="brand-products">
+                <a href="http://www.derya-makine.com/tr/brand/9-milhan">0 ürün</a>
+                <a href="http://www.derya-makine.com/tr/brand/9-milhan">Ürünleri görüntüle</a>
+              </div>
+            </li>
+                            
+            <li class="brand">
+              <div class="brand-img"><a href="http://www.derya-makine.com/tr/brand/10-organ-needles"><img src="http://www.derya-makine.com/img/m/10-small_default.jpg" alt="Organ Needles"></a></div>
+              <div class="brand-infos">
+                <p><a href="http://www.derya-makine.com/tr/brand/10-organ-needles">Organ Needles</a></p>
+                
+              </div>
+              <div class="brand-products">
+                <a href="http://www.derya-makine.com/tr/brand/10-organ-needles">0 ürün</a>
+                <a href="http://www.derya-makine.com/tr/brand/10-organ-needles">Ürünleri görüntüle</a>
+              </div>
+            </li>
+                            
+            <li class="brand">
+              <div class="brand-img"><a href="http://www.derya-makine.com/tr/brand/11-promar"><img src="http://www.derya-makine.com/img/m/tr-default-small_default.jpg" alt="Promar"></a></div>
+              <div class="brand-infos">
+                <p><a href="http://www.derya-makine.com/tr/brand/11-promar">Promar</a></p>
+                
+              </div>
+              <div class="brand-products">
+                <a href="http://www.derya-makine.com/tr/brand/11-promar">8 ürün</a>
+                <a href="http://www.derya-makine.com/tr/brand/11-promar">Ürünleri görüntüle</a>
+              </div>
+            </li>
+                            
+            <li class="brand">
+              <div class="brand-img"><a href="http://www.derya-makine.com/tr/brand/12-samsung-needles"><img src="http://www.derya-makine.com/img/m/12-small_default.jpg" alt="Samsung Needles"></a></div>
+              <div class="brand-infos">
+                <p><a href="http://www.derya-makine.com/tr/brand/12-samsung-needles">Samsung Needles</a></p>
+                
+              </div>
+              <div class="brand-products">
+                <a href="http://www.derya-makine.com/tr/brand/12-samsung-needles">0 ürün</a>
+                <a href="http://www.derya-makine.com/tr/brand/12-samsung-needles">Ürünleri görüntüle</a>
+              </div>
+            </li>
+                            
+            <li class="brand">
+              <div class="brand-img"><a href="http://www.derya-makine.com/tr/brand/13-sanwa-needles"><img src="http://www.derya-makine.com/img/m/13-small_default.jpg" alt="Sanwa Needles"></a></div>
+              <div class="brand-infos">
+                <p><a href="http://www.derya-makine.com/tr/brand/13-sanwa-needles">Sanwa Needles</a></p>
+                
+              </div>
+              <div class="brand-products">
+                <a href="http://www.derya-makine.com/tr/brand/13-sanwa-needles">0 ürün</a>
+                <a href="http://www.derya-makine.com/tr/brand/13-sanwa-needles">Ürünleri görüntüle</a>
+              </div>
+            </li>
+                            
+            <li class="brand">
+              <div class="brand-img"><a href="http://www.derya-makine.com/tr/brand/14-shima-seiki"><img src="http://www.derya-makine.com/img/m/14-small_default.jpg" alt="Shima Seiki"></a></div>
+              <div class="brand-infos">
+                <p><a href="http://www.derya-makine.com/tr/brand/14-shima-seiki">Shima Seiki</a></p>
+                
+              </div>
+              <div class="brand-products">
+                <a href="http://www.derya-makine.com/tr/brand/14-shima-seiki">4 ürün</a>
+                <a href="http://www.derya-makine.com/tr/brand/14-shima-seiki">Ürünleri görüntüle</a>
+              </div>
+            </li>
+                            
+            <li class="brand">
+              <div class="brand-img"><a href="http://www.derya-makine.com/tr/brand/15-sprayway"><img src="http://www.derya-makine.com/img/m/15-small_default.jpg" alt="Sprayway"></a></div>
+              <div class="brand-infos">
+                <p><a href="http://www.derya-makine.com/tr/brand/15-sprayway">Sprayway</a></p>
+                
+              </div>
+              <div class="brand-products">
+                <a href="http://www.derya-makine.com/tr/brand/15-sprayway">1 ürün</a>
+                <a href="http://www.derya-makine.com/tr/brand/15-sprayway">Ürünleri görüntüle</a>
+              </div>
+            </li>
+                            
+            <li class="brand">
+              <div class="brand-img"><a href="http://www.derya-makine.com/tr/brand/16-stoll"><img src="http://www.derya-makine.com/img/m/16-small_default.jpg" alt="Stoll"></a></div>
+              <div class="brand-infos">
+                <p><a href="http://www.derya-makine.com/tr/brand/16-stoll">Stoll</a></p>
+                
+              </div>
+              <div class="brand-products">
+                <a href="http://www.derya-makine.com/tr/brand/16-stoll">0 ürün</a>
+                <a href="http://www.derya-makine.com/tr/brand/16-stoll">Ürünleri görüntüle</a>
+              </div>
+            </li>
+                            
+            <li class="brand">
+              <div class="brand-img"><a href="http://www.derya-makine.com/tr/brand/17-wd-40"><img src="http://www.derya-makine.com/img/m/17-small_default.jpg" alt="WD-40"></a></div>
+              <div class="brand-infos">
+                <p><a href="http://www.derya-makine.com/tr/brand/17-wd-40">WD-40</a></p>
+                
+              </div>
+              <div class="brand-products">
+                <a href="http://www.derya-makine.com/tr/brand/17-wd-40">1 ürün</a>
+                <a href="http://www.derya-makine.com/tr/brand/17-wd-40">Ürünleri görüntüle</a>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </section>
+  </div>
+</div>
+
+
+ <!-- Section End -->
+
+
+    <!-- Footer Start -->
+    {% include '_partials/_footer.html' %}
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+</body>
+
+</html>

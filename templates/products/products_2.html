@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Derya Makine - Ürünler</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    {% include '_partials/_libaries.html' %}
+
+    <style>
+      .category-link {
+        cursor: pointer;
+      }
+      
+      .sub-category-list {
+        display: none;
+      }
+      
+      .fa-chevron-down {
+        display: none;
+        margin-right: 5px;
+      }
+      
+      .fa-chevron-right {
+        display: inline-block;
+        margin-right: 5px;
+      }
+      
+      .category-link.active + .sub-category-list {
+        display: block;
+      }
+      
+      .category-link.active .fa-chevron-down {
+        display: inline-block;
+      }
+      
+      .category-link.active .fa-chevron-right {
+        display: none;
+      }
+      
+      .product-item {
+        display: inline-block;
+        margin: 10px;
+      }
+      
+      .product-info {
+        text-align: center;
+      }
+      
+      .product-info h3 {
+        margin: 10px 0;
+      }
+      
+      .product-info .product-price {
+        font-weight: bold;
+      }
+      </style>
+    
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+
+<!-- Topbar Start -->
+<div class="container-fluid bg-light p-0">
+  <div class="row gx-0 d-none d-lg-flex">
+      <div class="col-lg-7 px-5 text-start">
+          <div class="h-100 d-inline-flex align-items-center py-3 me-4">
+              <small class="fa fa-map-marker-alt text-primary me-2"></small>
+              <small>İstanbul/Turkey</small>
+          </div>
+          <div class="h-100 d-inline-flex align-items-center py-3">
+              <small class="far fa-clock text-primary me-2"></small>
+              <small>Mon - Fri : 09.00 AM - 09.00 PM</small>
+          </div>
+      </div>
+      <div class="col-lg-5 px-5 text-end">
+          <div class="h-100 d-inline-flex align-items-center py-3 me-4">
+              <small class="fa fa-language text-primary me-2"></small>
+              <small>
+                  <a href="#">English</a> | <a href="#">Türkçe</a>
+              </small>
+          </div>
+          <div class="h-100 d-inline-flex align-items-center py-3">
+              <small class="fa fa-phone-alt text-primary me-2"></small>
+              <small>+90 (212) 544 80 00</small> <small>
+          </div>
+          <div class="h-100 d-inline-flex align-items-center">
+              <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-facebook-f"></i></a>
+              <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-twitter"></i></a>
+              <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-linkedin-in"></i></a>
+              <a class="btn btn-sm-square bg-white text-primary me-0" href=""><i class="fab fa-instagram"></i></a>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+{% include '_partials/_navbar.html' %}
+<!-- Navbar End -->
+
+
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header mb-5 p-0" style="background-image: url(img/banner1.jpg);">
+        <div class="container-fluid page-header-inner py-5">
+            <div class="container text-center">
+                <h1 class="display-3 text-white mb-3 animated slideInDown">Ürünler</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-center text-uppercase">
+                        <li class="breadcrumb-item"><a href="../main/index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="products_1.html">Ürünler</a></li>
+                        <li class="breadcrumb-item"><a href="products_2.html">Kategori 2</a></li>
+                        <li class="breadcrumb-item text-white active" aria-current="page">Kategori 2.1</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+
+    <div class="row">
+      <!-- Kategori Tablosu -->
+      <div class="col-lg-3">
+        <div class="category-sidebar">
+          <div class="filter">
+            <label for="filter-input">Filtrele:</label>
+            <input type="text" id="filter-input" placeholder="Ara...">
+          </div>
+          <br>
+          <ul class="category-list">
+            <li class="category-item">
+              <a class="category-link" href="#">Kategori 1 <i class="fas fa-chevron-right"></i></a>
+              <ul class="sub-category-list">
+                <li class="sub-category-item">
+                  <a class="sub-category-link" href="products_1.html">Alt Kategori 1.1</a>
+                </li>
+                <li class="sub-category-item">
+                  <a class="sub-category-link" href="#">Alt Kategori 1.2</a>
+                </li>
+              </ul>
+            </li>            
+            <li class="category-item">
+              <a class="category-link" href="#">Kategori 2 <i class="fas fa-chevron-right"></i></a>
+              <ul class="sub-category-list">
+                <li class="sub-category-item">
+                  <a class="sub-category-link" href="products_2.html">Alt Kategori 2.1</a>
+                </li>
+                <li class="sub-category-item">
+                  <a class="sub-category-link" href="#">Alt Kategori 2.2</a>
+                </li>
+              </ul>
+            </li>
+            <li class="category-item">
+              <a class="category-link" href="#">Kategori 3 <i class="fas fa-chevron-right"></i></a>
+              <ul class="sub-category-list">
+                <li class="sub-category-item">
+                  <a class="sub-category-link" href="#">Alt Kategori 3.1</a>
+                </li>
+                <li class="sub-category-item">
+                  <a class="sub-category-link" href="#">Alt Kategori 3.2</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      
+    
+      <!-- Ürün Kataloğu -->
+      <div class="col-lg-9">
+        <div class="product-catalog">
+          <div class="product-category">
+            <h2>
+              <span class="category-title">Tüm Ürünler</span>
+              <span class="category-indicator"></span>
+            </h2>
+            <div class="product-list">
+              <div class="product-item" data-category="Tüm Ürünler">
+                <img src="img/product1.jpg" alt="Ürün 1">
+                <div class="product-info">
+                  <h3>Ürün 1</h3>
+                  <p class="product-price">$99.99</p>
+                  <a href="product_details.html" class="btn btn-primary">Detaylar</a>
+                </div>
+              </div>
+              <div class="product-item" data-category="Tüm Ürünler">
+                <img src="img/product2.jpg" alt="Ürün 2">
+                <div class="product-info">
+                  <h3>Ürün 2</h3>
+                  <p class="product-price">$79.99</p>
+                  <a href="product_details.html" class="btn btn-primary">Detaylar</a>
+                </div>
+              </div>
+              <div class="product-item" data-category="Tüm Ürünler">
+                <img src="img/product3.jpg" alt="Ürün 3">
+                <div class="product-info">
+                  <h3>Ürün 3</h3>
+                  <p class="product-price">$59.99</p>
+                  <a href="product_details.html" class="btn btn-primary">Detaylar</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var categoryLinks = document.getElementsByClassName("category-link");
+      var i;
+    
+      for (i = 0; i < categoryLinks.length; i++) {
+        categoryLinks[i].addEventListener("click", function() {
+          this.classList.toggle("active");
+          var subCategoryList = this.nextElementSibling;
+          if (subCategoryList.style.display === "block") {
+            subCategoryList.style.display = "none";
+          } else {
+            subCategoryList.style.display = "block";
+          }
+    
+          var chevronIcon = this.querySelector('i');
+          chevronIcon.classList.toggle('fa-chevron-down');
+          chevronIcon.classList.toggle('fa-chevron-right');
+        });
+      }
+    
+      var filterInput = document.getElementById("filter-input");
+      var categoryItems = document.getElementsByClassName("category-item");
+    
+      filterInput.addEventListener("input", function() {
+        var filterValue = this.value.toLowerCase();
+    
+        for (var i = 0; i < categoryItems.length; i++) {
+          var categoryItem = categoryItems[i];
+          var categoryLink = categoryItem.querySelector(".category-link");
+          var categoryName = categoryLink.textContent.toLowerCase();
+    
+          if (categoryName.includes(filterValue)) {
+            categoryItem.style.display = "block";
+          } else {
+            categoryItem.style.display = "none";
+          }
+        }
+      });
+    });
+    </script>
+    
+    
+
+    
+
+    <!-- Footer Start -->
+   {% include '_partials/_footer.html' %}
+  <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+</body>
+
+</html>

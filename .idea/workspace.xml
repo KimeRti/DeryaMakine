@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d9bb3e12-7dee-4edd-9793-ca82241c8889" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/DeryaMakine" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/account/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/account/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/account/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/account/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/account/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/account/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/account/token.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/account/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/account/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/product/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/product/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/product/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/product/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/product/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/product/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/product/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/animate/animate.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/animate/animate.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/counterup/counterup.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/easing/easing.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/easing/easing.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/owlcarousel/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/owlcarousel/assets/ajax-loader.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/owlcarousel/assets/owl.carousel.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/owlcarousel/assets/owl.carousel.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/owlcarousel/assets/owl.theme.default.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/owlcarousel/assets/owl.theme.default.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/owlcarousel/assets/owl.theme.green.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/owlcarousel/assets/owl.theme.green.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/owlcarousel/assets/owl.video.play.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/owlcarousel/owl.carousel.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/owlcarousel/owl.carousel.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/tempusdominus/css/tempusdominus-bootstrap-4.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/tempusdominus/js/moment-timezone.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/tempusdominus/js/moment.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/tempusdominus/js/tempusdominus-bootstrap-4.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/waypoints/links.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/waypoints/waypoints.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/wow/wow.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/wow/wow.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/account/acc_active_email.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/account/email.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Derya-Makine.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DeryaMakine/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DeryaMakine/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DeryaMakine/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/DeryaMakine/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DeryaMakine/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/DeryaMakine/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/account/account.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/account.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/account/forgot.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/forgot.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/account/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/account/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/register.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="SYNC" />
+  </component>
+  <component name="ProjectId" id="2RbamaYeqfVvcB41ji6lq3RI2HS" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/merte/Desktop/İş-Güç/Derya-Makine/templates/account&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.new.ui&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\merte\Desktop\İş-Güç\Derya-Makine\templates\account" />
+      <recent name="C:\Users\merte\Desktop\İş-Güç\DeryaMakine\static\img" />
+      <recent name="C:\Users\merte\Desktop\İş-Güç\DeryaMakine\templates" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\merte\Desktop\İş-Güç\Derya-Makine\account" />
+      <recent name="C:\Users\merte\Desktop\İş-Güç\Derya-Makine\account\migrations" />
+      <recent name="C:\Users\merte\Desktop\İş-Güç\DeryaMakine\templates\main" />
+      <recent name="C:\Users\merte\Desktop\İş-Güç\DeryaMakine\templates\account" />
+      <recent name="C:\Users\merte\Desktop\İş-Güç\DeryaMakine\templates\products" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Django Server.Derya-Makine">
+    <configuration name="Derya-Makine" type="Python.DjangoServer" factoryName="Django server">
+      <module name="Derya-Makine" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="DeryaMakine.settings" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="DeryaMakine" type="Python.DjangoServer" factoryName="Django server">
+      <module name="DeryaMakine" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="DeryaMakine.settings" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d9bb3e12-7dee-4edd-9793-ca82241c8889" name="Changes" comment="" />
+      <created>1687521393436</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1687521393436</updated>
+      <workItem from="1687521399724" duration="3257000" />
+      <workItem from="1687613489104" duration="500000" />
+      <workItem from="1687614604178" duration="605000" />
+      <workItem from="1687681443945" duration="1173000" />
+      <workItem from="1687683151044" duration="795000" />
+      <workItem from="1688379752820" duration="4222000" />
+      <workItem from="1688898989659" duration="69000" />
+      <workItem from="1689691587362" duration="58000" />
+      <workItem from="1689691656982" duration="151000" />
+      <workItem from="1689693978724" duration="129000" />
+      <workItem from="1689694165885" duration="163000" />
+      <workItem from="1689694349080" duration="357000" />
+      <workItem from="1689694755933" duration="296000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

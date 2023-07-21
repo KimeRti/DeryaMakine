@@ -7,6 +7,7 @@
     <list default="true" id="d9bb3e12-7dee-4edd-9793-ca82241c8889" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DeryaMakine/settings/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/DeryaMakine/settings/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DeryaMakine/settings/development.py" beforeDir="false" afterPath="$PROJECT_DIR$/DeryaMakine/settings/development.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +71,7 @@
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
-        <env name="DJANGO_SETTINGS_MODULE" value="DeryaMakine.settings" />
+        <env name="DJANGO_SETTINGS_MODULE" value="DeryaMakine.settings.development" />
       </envs>
       <option name="SDK_HOME" value="C:\Users\merte\Desktop\İş-Güç\DeryaMakine\venv\Scripts\python.exe" />
       <option name="SDK_NAME" value="Python 3.11 (DeryaMakine) (2)" />
@@ -113,6 +114,10 @@
       <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Django Server.Derya-Makine" />
+      <item itemvalue="Django Server.DeryaMakine" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -139,7 +144,7 @@
       <workItem from="1689706752584" duration="2927000" />
       <workItem from="1689790784103" duration="1677000" />
       <workItem from="1689939001006" duration="1938000" />
-      <workItem from="1689961732555" duration="431000" />
+      <workItem from="1689961732555" duration="1010000" />
     </task>
     <servers />
   </component>

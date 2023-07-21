@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d9bb3e12-7dee-4edd-9793-ca82241c8889" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/DeryaMakine/settings/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DeryaMakine/settings/development.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DeryaMakine/settings/production.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DeryaMakine/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/DeryaMakine/settings/base.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +22,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -55,11 +59,11 @@
       <recent name="C:\Users\merte\Desktop\İş-Güç\DeryaMakine\templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\merte\Desktop\İş-Güç\DeryaMakine\DeryaMakine\settings" />
       <recent name="C:\Users\merte\Desktop\İş-Güç\Derya-Makine\account" />
       <recent name="C:\Users\merte\Desktop\İş-Güç\Derya-Makine\account\migrations" />
       <recent name="C:\Users\merte\Desktop\İş-Güç\DeryaMakine\templates\main" />
       <recent name="C:\Users\merte\Desktop\İş-Güç\DeryaMakine\templates\account" />
-      <recent name="C:\Users\merte\Desktop\İş-Güç\DeryaMakine\templates\products" />
     </key>
   </component>
   <component name="RunManager" selected="Django Server.Derya-Makine">
@@ -137,7 +141,7 @@
       <workItem from="1689695655447" duration="99000" />
       <workItem from="1689706752584" duration="2927000" />
       <workItem from="1689790784103" duration="1677000" />
-      <workItem from="1689939001006" duration="741000" />
+      <workItem from="1689939001006" duration="1938000" />
     </task>
     <servers />
   </component>

@@ -1,13 +1,15 @@
-from django.contrib.auth import authenticate, login, get_user_model, logout
-from django.contrib.auth.models import User
-from django.contrib.auth.tokens import default_token_generator
+from .token import account_activation_token
+from django.contrib import messages
+from django.contrib.auth.forms import PasswordResetForm
 from django.contrib.sites.shortcuts import get_current_site
+from django.core.mail import EmailMessage
 from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
+from django.contrib.auth import login, authenticate, logout, get_user_model
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes, force_str
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from .token import account_activation_token
-from django.core.mail.message import EmailMessage
+from django.contrib.auth.tokens import default_token_generator
 
 
 account_activation_token: object = default_token_generator
@@ -96,10 +98,29 @@ def profile(request):
     return redirect("home")
 
 
-def forgot(request):
-    if not request.user.is_authenticated:
-        return render(request, "account/forgot.html")
-    return redirect("home")
+def password_reset_request(request):
+    if request.method == "POST":
+        password_reset_form = PasswordResetForm(request.POST)
+        if password_reset_form.is_valid():
+            data = password_reset_form.cleaned_data['email']
+            associated_users = User.objects.filter(email=data)
+            if associated_users.exists():
+                for user in associated_users:
+                    current_site = get_current_site(request)
+                    subject = 'Şifre Sıfırlama Talebi'
+                    message = render_to_string('account/pass_reset_email.html', {
+                        'user': user,
+                        'domain': current_site.domain,
+                        'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                        'token': default_token_generator.make_token(user),
+                    })
+                    user.email_user(subject, message)
+                return render(request,'account/password_reset_done.html')
+            else:
+                messages.error(request, 'Bu email ile kayıtlı kullanıcı bulunamadı.')
+    else:
+        password_reset_form = PasswordResetForm()
+    return render(request=request, template_name='account/password_reset.html', context={'password_reset_form': password_reset_form})
 
 
 def logout_request(request):

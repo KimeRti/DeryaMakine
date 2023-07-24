@@ -1,0 +1,7 @@
+{% autoescape off %}
+Merhaba {{ user.username }}
+Bu mail hesabınızın şifresini değiştirmek için gönderilmiştir.
+Eğer böyle bir talebiniz yoksa bu maili dikkate almayınız.
+Şifrenizi değiştirmek için aşağıdaki linke tıklayınız.
+http://{{ domain }}{% url 'password_reset_confirm' uidb64=uid token=token %}
+{% endautoescape %}

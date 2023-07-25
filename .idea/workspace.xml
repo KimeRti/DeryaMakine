@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d9bb3e12-7dee-4edd-9793-ca82241c8889" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/DeryaMakine/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DeryaMakine/settings/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/DeryaMakine/settings/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DeryaMakine/settings/production.py" beforeDir="false" afterPath="$PROJECT_DIR$/DeryaMakine/settings/production.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DeryaMakine/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/DeryaMakine/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/main/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/404.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -56,11 +60,11 @@
       <recent name="C:\Users\merte\Desktop\İş-Güç\DeryaMakine\templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\merte\Desktop\İş-Güç\DeryaMakine\templates" />
       <recent name="C:\Users\merte\Desktop\İş-Güç\DeryaMakine\DeryaMakine\settings" />
       <recent name="C:\Users\merte\Desktop\İş-Güç\Derya-Makine\account" />
       <recent name="C:\Users\merte\Desktop\İş-Güç\Derya-Makine\account\migrations" />
       <recent name="C:\Users\merte\Desktop\İş-Güç\DeryaMakine\templates\main" />
-      <recent name="C:\Users\merte\Desktop\İş-Güç\DeryaMakine\templates\account" />
     </key>
   </component>
   <component name="RunManager" selected="Django Server.Derya-Makine">
@@ -145,7 +149,7 @@
       <workItem from="1689939001006" duration="1938000" />
       <workItem from="1689961732555" duration="2822000" />
       <workItem from="1690196914371" duration="4395000" />
-      <workItem from="1690286173898" duration="2810000" />
+      <workItem from="1690286173898" duration="3597000" />
     </task>
     <servers />
   </component>

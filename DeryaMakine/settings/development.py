@@ -5,7 +5,6 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'static/'
+     os.path.join(BASE_DIR, 'static/')
      ]
 
-STATIC_ROOT = BASE_DIR / 'staticfiles/'

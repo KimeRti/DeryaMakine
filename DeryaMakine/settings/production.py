@@ -4,4 +4,4 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['www.deryamakine.com', 'deryamakine.com']
 
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')

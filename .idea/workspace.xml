@@ -7,7 +7,8 @@
     <list default="true" id="d9bb3e12-7dee-4edd-9793-ca82241c8889" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DeryaMakine/settings/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/DeryaMakine/settings/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DeryaMakine/settings/db.sqlite3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DeryaMakine/settings/production.py" beforeDir="false" afterPath="$PROJECT_DIR$/DeryaMakine/settings/production.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,6 +149,7 @@
       <workItem from="1690196914371" duration="4395000" />
       <workItem from="1690286173898" duration="4171000" />
       <workItem from="1690618509334" duration="437000" />
+      <workItem from="1690703275177" duration="357000" />
     </task>
     <servers />
   </component>

@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,7 +57,7 @@
       .product-info .product-price {
         font-weight: bold;
       }
-      
+
       
       
       </style>
@@ -117,7 +118,7 @@
 
 
     <!-- Page Header Start -->
-    <div class="container-fluid page-header mb-5 p-0" style="background-image: url(img/banner1.jpg);">
+    <div class="container-fluid page-header mb-5 p-0" style="background-image: url({% static 'img/banner1.jpg' %});">
         <div class="container-fluid page-header-inner py-5">
             <div class="container text-center">
                 <h1 class="display-3 text-white mb-3 animated slideInDown">Ürünler</h1>
@@ -125,8 +126,6 @@
                     <ol class="breadcrumb justify-content-center text-uppercase">
                         <li class="breadcrumb-item"><a href="../main/index.html">Home</a></li>
                         <li class="breadcrumb-item"><a href="products_1.html">Ürünler</a></li>
-                        <li class="breadcrumb-item"><a href="products_1.html">Kategori 1</a></li>
-                        <li class="breadcrumb-item text-white active" aria-current="page">Kategori 1.1</li>
                     </ol>
                 </nav>
             </div>
@@ -184,43 +183,33 @@
       
       
     
-      <!-- Ürün Kataloğu -->
-      <div class="col-lg-9">
-        <div class="product-catalog">
-          <div class="product-category">
-            <h2>
-              <span class="category-title">Tüm Ürünler</span>
-              <span class="category-indicator"></span>
-            </h2>
-            <div class="product-list">
-              <div class="product-item" data-category="Tüm Ürünler">
-                <img src="img/product1.jpg" alt="Ürün 1">
-                <div class="product-info">
-                  <h3>Ürün 1</h3>
-                  <p class="product-price">$99.99</p>
-                  <a href="product_details.html" class="btn btn-primary">Detaylar</a>
+     <!-- Ürün Kataloğu -->
+    <div class="col-lg-9">
+            <div class="product-catalog">
+                <div class="product-category">
+                    <h2>
+                        <span class="category-title">Tüm Ürünler</span>
+                        <span class="category-indicator"></span>
+                    </h2>
+                    <div class="product-list">
+                    {% for product in products %}
+                        <div class="product-item" data-category="Tüm Ürünler">
+                            {% if product.images.all %}
+                                <img src="{{ product.images.first.image.url }}" alt="{{ product.name }} Image" style="max-width: 100%;">
+                            {% else %}
+                                <img src="{% static 'img/empty.jpg' %}" alt="Empty Image" style="max-width: 100%;">
+                            {% endif %}
+                            <div class="product-info">
+                                <h3>{{ product.name }}</h3>
+                                <p class="product-price">{{ product.price }}$</p>
+                                <a href="{% url 'product_detail' pk=product.id %}" class="btn btn-primary">Detaylar</a>
+                            </div>
+                        </div>
+                    {% endfor %}
                 </div>
-              </div>
-              <div class="product-item" data-category="Tüm Ürünler">
-                <img src="img/product2.jpg" alt="Ürün 2">
-                <div class="product-info">
-                  <h3>Ürün 2</h3>
-                  <p class="product-price">$79.99</p>
-                  <a href="product_details.html" class="btn btn-primary">Detaylar</a>
-                </div>
-              </div>
-              <div class="product-item" data-category="Tüm Ürünler">
-                <img src="img/product3.jpg" alt="Ürün 3">
-                <div class="product-info">
-                  <h3>Ürün 3</h3>
-                  <p class="product-price">$59.99</p>
-                  <a href="product_details.html" class="btn btn-primary">Detaylar</a>
-                </div>
-              </div>
+
             </div>
-          </div>
         </div>
-      </div>
     </div>
     
     

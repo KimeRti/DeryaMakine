@@ -1,0 +1,6 @@
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ product_form.as_p }}
+  {{ image_formset.as_p }}
+  <input type="submit" value="Ürün Ekle">
+</form>

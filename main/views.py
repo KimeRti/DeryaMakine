@@ -6,7 +6,7 @@ def home_view(request):
 
 
 def about_view(request):
-    return render(request, "main/About.html", {'url': 'about'})
+    return render(request, "main/about.html", {'url': 'about'})
 
 
 def contact_view(request):

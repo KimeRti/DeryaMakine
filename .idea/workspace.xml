@@ -6,20 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="d9bb3e12-7dee-4edd-9793-ca82241c8889" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DeryaMakine/settings/production.py" beforeDir="false" afterPath="$PROJECT_DIR$/DeryaMakine/settings/production.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/_partials/_footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_partials/_footer.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/main/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/main/brands.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/brands.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/main/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/checkout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/main/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/contact.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/main/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/main/privacy.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/privacy.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/main/terms.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/terms.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/main/usage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/usage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/products/basket.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/products/basket.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/products/product_details.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/products/product_details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/products/products_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/products/products_1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/products/products_2.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/products/products_2.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,7 +153,8 @@
       <workItem from="1691492535893" duration="3038000" />
       <workItem from="1692523143872" duration="1385000" />
       <workItem from="1693384391934" duration="1177000" />
-      <workItem from="1694446853730" duration="305000" />
+      <workItem from="1694446853730" duration="415000" />
+      <workItem from="1694630148225" duration="223000" />
     </task>
     <servers />
   </component>

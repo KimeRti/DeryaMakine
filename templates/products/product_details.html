@@ -168,7 +168,14 @@
                     <li>Category: <span>Electronics</span></li>
                     <li>Rating: <span>4.5</span></li>
                 </ul>
-                <button type="button" class="btn btn-primary">Sepete Ekle </button>
+                <form action="{% url 'addtocart' product.id  %}" method="POST">
+                    {% csrf_token %}
+                    <div>
+                        {{ form.as_p }}
+                    </div>
+                    <input type="sumbit" class="btn btn-primary" value="Sepete Ekle">
+                </form>
+
             </div>
         </div>
     </div>

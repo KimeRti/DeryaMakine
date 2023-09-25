@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+
 from .token import account_activation_token
 from django.contrib import messages
 from django.contrib.auth.forms import PasswordResetForm
@@ -16,19 +18,25 @@ account_activation_token: object = default_token_generator
 
 
 def signin(request):
-    if request.user.is_authenticated:
-        return redirect("home")
     if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
 
-        user = authenticate(request,username=username, password=password)
+        user = authenticate(request, username=username, password=password)
 
-        if user is None:
-            return render(request,'account/login.html',{'error':'kullanıcı adı veya şifre hatalı'})
-        else:
+        if user is not None:
             login(request, user)
-            return redirect('home')
+            next_url = request.POST.get('next')
+            if next_url:
+                return redirect(next_url)
+            else:
+                return redirect('home')
+        else:
+            return render(request, 'account/login.html', {'error': 'Kullanıcı adı veya şifre hatalı'})
+
+    if request.user.is_authenticated:
+        return redirect("home")
+
     return render(request, "account/login.html")
 
 
@@ -92,6 +100,7 @@ def activate(request, uidb64, token):
         return render(request, 'account/email.html', {"error": "Aktivasyon linki geçersiz!", 'errorr': True})
 
 
+@login_required(login_url='login')
 def profile(request):
     if request.user.is_authenticated:
         return render(request, "account/account.html")

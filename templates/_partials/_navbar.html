@@ -12,42 +12,11 @@
             <a href="{% url 'home' %}" class="nav-item nav-link py-4 px-lg-5 d-none d-lg-block{% if url == 'home' %} active{% endif %}">Ana Sayfa</a>
             <a href="{% url 'contact' %}" class="nav-item nav-link py-4 px-lg-5 d-none d-lg-block{% if url == 'contact' %} active{% endif %}">İletişim</a>
             <a href="{% url 'about' %}" class="nav-item nav-link py-4 px-lg-5 d-none d-lg-block{% if url == 'about' %} active{% endif %}">Hakkımızda</a>
-            <div class="nav-item dropdown">
-                <a href="products.html" class="btn btn-outline-secondary py-4 px-lg-5 d-none d-lg-block nav-link2 dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-shopping-cart me-xxl-1"></i>Ürünler</a>
-                <div class="dropdown-menu fade-up m-0">
-                    <a href="../products/products_1.html" class="dropdown-item">Kategori 1</a>
-                    <a href="../products/products_2.html" class="dropdown-item">Kategori 2</a>
-                </div>
-            </div>
+            <a href="{% url 'products' %}" class="btn btn-outline-secondary py-4 px-lg-5 d-none d-lg-block nav-link2 "><i class="fa fa-shopping-cart me-xxl-1"></i>Ürünler</a>
             {% if request.user.is_authenticated %}
-                <div class="nav-item dropdown">
-                    <a href="products.html" class="btn btn-outline-secondary py-4 px-lg-5 d-none d-lg-block nav-link2 dropdown-toggle" data-bs-toggle="dropdown">
-                        <i class="fa fa-shopping-basket me-xxl-1"></i>Sepet
-                    </a>
-                    <div class="dropdown-menu fade-up m-0">
-                        <div class="dropdown-item">
-                            <div class="d-flex align-items-start">
-                                <img src="{% static 'img/shima-seiki-nssg-122-sv-14g.jpg' %}" alt="Product 1" class="img-fluid me-3" style="max-width: 50px;">
-                                <div>
-                                    <h6 class="mb-1">Ürün 1</h6>
-                                    <p class="mb-1">Fiyat: $10</p>
-                                    <p class="mb-0">Adet: 1</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="dropdown-item">
-                            <div class="d-flex align-items-start">
-                                <img src="{% static 'img/shima-seiki-ssg-122-sc-7g.jpg' %}" alt="Product 2" class="img-fluid me-3" style="max-width: 50px;">
-                                <div>
-                                    <h6 class="mb-1">Ürün 2</h6>
-                                    <p class="mb-1">Fiyat: $15</p>
-                                    <p class="mb-0">Adet: 2</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="dropdown-divider"></div>
-                        <a href="../products/basket.html" class="dropdown-item text-center">Sepeti Görüntüle</a>
-                    </div>
+                <a href="{% url 'order' %}" class="btn btn-outline-secondary py-4 px-lg-5 d-none d-lg-block nav-link2">
+                    <i class="fa fa-shopping-basket me-xxl-1"></i>Sepet
+                </a>
                 </div>
             {% endif %}
 

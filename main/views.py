@@ -1,8 +1,11 @@
 from django.shortcuts import render
 
+from product.models import Category
+
 
 def home_view(request):
-    return render(request, "main/index.html", {'url': 'home'})
+    category = Category.objects.filter(status=True)
+    return render(request, "main/index.html", {'url': 'home', 'category': category})
 
 
 def about_view(request):

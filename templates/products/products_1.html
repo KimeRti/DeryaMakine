@@ -177,7 +177,7 @@
                             <div class="product-info">
                                 <h3>{{ product.title }}</h3>
                                 <p class="product-price">{{ product.price }}$</p>
-                                <a href="" class="btn btn-primary">Detaylar</a>
+                                <a href="{% url 'productdetail' product.id  %}" class="btn btn-primary">Detaylar</a>
                             </div>
                         </div>
                     {% endfor %}

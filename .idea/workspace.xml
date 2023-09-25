@@ -5,7 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d9bb3e12-7dee-4edd-9793-ca82241c8889" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/main/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/main/brands.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/brands.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/main/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/checkout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/main/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/contact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/main/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/main/privacy.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/privacy.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/main/terms.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/terms.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/main/usage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/usage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/products/basket.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/products/basket.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/products/product_details.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/products/product_details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/products/products_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/products/products_1.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,7 +168,7 @@
       <workItem from="1695405633376" duration="873000" />
       <workItem from="1695469322709" duration="10000" />
       <workItem from="1695469682986" duration="2121000" />
-      <workItem from="1695638953059" duration="13764000" />
+      <workItem from="1695638953059" duration="13909000" />
     </task>
     <servers />
   </component>

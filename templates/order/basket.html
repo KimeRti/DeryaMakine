@@ -155,38 +155,34 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 style="text-align: center; margin-top: 20px;">Sepetim</h1>
+        {% for message in messages %}
+            {% if message %}
+                <div class="alert alert-{{ message.tags }}" role="alert">
+                    {{ message }}
+                </div>
+            {% endif %}
+        {% endfor %}
+            {% for shopcart in shopcarts %}
+            <div class="product">
+                <img src="{{ shopcart.product.image.url }}" alt="Product 1">
+                <div class="product-details">
+                    <h3>{{ shopcart.product.title }}</h3>
+                    <p>Fiyat: {{ shopcart.product.price }}$</p>
+                    <p>Adet: {{ shopcart.quantity }}</p>
+                    <a href="{% url 'deletefromcart' shopcart.id %}"><i class="fas fa-trash delete-icon"></i></a>
+                </div>
+            </div>
 
-            <div class="product">
-                <img src="img/shima-seiki-nssg-122-sv-14g.jpg" alt="Product 1">
-                <div class="product-details">
-                    <h3>Ürün 1</h3>
-                    <p>Fiyat: $10</p>
-                    <p>Adet: 1</p>
-                    <i class="fas fa-trash delete-icon"></i>
-                </div>
-            </div>
-            
-            <div class="product">
-                <img src="img/shima-seiki-ssg-122-sc-7g.jpg" alt="Product 2">
-                <div class="product-details">
-                    <h3>Ürün 2</h3>
-                    <p>Fiyat: $15</p>
-                    <p>Adet: 2</p>
-                    <i class="fas fa-trash delete-icon"></i>
-                </div>
-            </div>
-            
             <div class="checkout-container">
                 <div class="total-price-text">TOPLAM TUTAR:</div>
-                <div class="total-price">$35</div>
-                <a href="../main/checkout.html" class="checkout-button">Ödeme Yap</a>
+                <div class="total-price">${{ shopcart.amount }}</div>
+                <a href="{% url 'checkout' %}" class="checkout-button">Ödeme Yap</a>
             </div>
         </div>
+         {% endfor %}
     </div>
 </div>
-
-
-    
+<!-- Page Content End -->
 
     <!-- Footer Start -->
     {% include '_partials/_footer.html' %}

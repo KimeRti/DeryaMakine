@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import render, redirect
+
+from order.models import ShopCartForm
 from .models import Product, Category
 
 
@@ -14,10 +16,12 @@ def products_view(request):
 
 def product_detail_view(request, pk):
     product = Product.objects.get(id=pk)
+    form = ShopCartForm()
     url = 'products'
     data = {
         "product": product,
-        "url": url
+        "url": url,
+        "form": form
     }
     return render(request, "products/product_details.html", data)
 

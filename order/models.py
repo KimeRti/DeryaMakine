@@ -22,7 +22,7 @@ class ShopCartForm(ModelForm):
     class Meta:
         model = ShopCart
         fields = ['quantity']
-        widgets= {
+        widgets = {
             'quantity': TextInput(attrs={'class': 'input', 'type': 'number', 'value': 1}),
         }
         labels = {

@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d9bb3e12-7dee-4edd-9793-ca82241c8889" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DeryaMakine/settings/development.py" beforeDir="false" afterPath="$PROJECT_DIR$/DeryaMakine/settings/development.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DeryaMakine/settings/production.py" beforeDir="false" afterPath="$PROJECT_DIR$/DeryaMakine/settings/production.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,7 +164,7 @@
       <workItem from="1696250557927" duration="4652000" />
       <workItem from="1697442562636" duration="1672000" />
       <workItem from="1698442167174" duration="599000" />
-      <workItem from="1699717596318" duration="2431000" />
+      <workItem from="1699717596318" duration="2524000" />
     </task>
     <servers />
   </component>

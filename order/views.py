@@ -147,10 +147,9 @@ def ok_url(request):
 @require_http_methods(["POST"])
 @csrf_exempt
 def fail_url(request):
-    order = Order.objects.filter(user_id=request.user.id).last()
-    order.delete()
+    data = ShopCart.objects.filter(user_id=request.user.id)
     messages.error(request, "Ödeme işlemi başarısız.")
-    return render(request, 'order/checkout.html')
+    return render(request, 'order/checkout.html', {'shopcarts': data})
 
 
 @login_required(login_url='login')

@@ -12,7 +12,7 @@ def products_view(request):
         "subcategories": Category.objects.filter(status=True).exclude(parent=None)
     }
     p = Product.objects.get(id=1)
-    print(p.get_image_url())
+    print(p.image.url)
     return render(request, "products/products_1.html", data)
 
 

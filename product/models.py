@@ -50,6 +50,9 @@ class Product(models.Model):
             for i in range(len(breadcrumb)-1):
                 breadcrumb[i] = '/'.join(breadcrumb[-1:i-1:-1])
             return breadcrumb[-1:0:-1]
+        
+    def get_image_url(self):
+        return self.image.url
 
 
 class ProductImage(models.Model):

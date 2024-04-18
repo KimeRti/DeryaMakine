@@ -2,7 +2,7 @@ from .base import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['www.deryamakine.com', 'deryamakine.com']
+ALLOWED_HOSTS = ['www.deryamakine.com', 'deryamakine.com', '5.180.106.89:8000']
 
 STATIC_ROOT = 'DeryaMakine/static/'
 

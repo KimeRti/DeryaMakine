@@ -11,8 +11,6 @@ def products_view(request):
         "categories": Category.objects.filter(status=True, parent=None),
         "subcategories": Category.objects.filter(status=True).exclude(parent=None)
     }
-    p = Product.objects.get(id=1)
-    print(p.image.url)
     return render(request, "products/products_1.html", data)
 
 

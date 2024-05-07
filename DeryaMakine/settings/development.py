@@ -14,11 +14,11 @@ DATABASES = {
 
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
 
-        'NAME': 'DeryaMakine',
+        'NAME': 'deryamakine',
 
-        'USER': 'postgres',
+        'USER': 'kimerti',
 
-        'PASSWORD': '123',
+        'PASSWORD': 'kimerti123',
 
         'HOST': 'localhost',
 

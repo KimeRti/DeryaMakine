@@ -2,7 +2,7 @@ from .base import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['www.deryamakine.com', 'deryamakine.com', '5.180.106.89:8000']
+ALLOWED_HOSTS = ['www.deryamakine.com', 'deryamakine.com']
 
 STATIC_ROOT = 'DeryaMakine/static/'
 
@@ -18,9 +18,9 @@ DATABASES = {
 
         'NAME': 'deryamakine',
 
-        'USER': 'detexuser',
+        'USER': 'kimerti',
 
-        'PASSWORD': 'detex123',
+        'PASSWORD': 'kimerti123',
 
         'HOST': 'localhost',
 

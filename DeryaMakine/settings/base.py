@@ -25,9 +25,6 @@ SECRET_KEY = 'django-insecure-muy_48i^fe5l6cs+odk#!y$2a4qq^#+t)8t=zci_oyj2z#6l#e
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = True
-
-ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -81,23 +78,7 @@ WSGI_APPLICATION = 'DeryaMakine.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
 
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-
-        'NAME': 'deryamakine',
-
-        'USER': 'deryamakine',
-
-        'PASSWORD': 'deryamakine123',
-
-        'HOST': 'localhost',
-
-        'PORT': '5432',
-
-    }
-}
 
 
 # Password validation
@@ -134,9 +115,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATICFILES_DIRS = [
-     os.path.join(BASE_DIR, 'static/')
-     ]
 STATIC_URL = 'static/'
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')

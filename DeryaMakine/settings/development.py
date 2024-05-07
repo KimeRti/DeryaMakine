@@ -16,9 +16,9 @@ DATABASES = {
 
         'NAME': 'deryamakine',
 
-        'USER': 'kimerti',
+        'USER': 'deryamakine',
 
-        'PASSWORD': 'kimerti123',
+        'PASSWORD': 'deryamakine123',
 
         'HOST': 'localhost',
 

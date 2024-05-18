@@ -27,7 +27,8 @@ class Category(models.Model):
 
 class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    title = models.CharField(max_length=150)
+    title = models.CharField(max_length=150,blank=True)
+    titleEN = models.CharField(max_length=150, blank=True)
     keywords = models.CharField(max_length=255, blank=True)
     description = models.CharField(max_length=255, blank=True)
     image = models.ImageField(blank=True, upload_to='product')

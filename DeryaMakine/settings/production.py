@@ -4,7 +4,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['www.deryamakine.com', 'deryamakine.com']
 
-STATIC_ROOT = 'DeryaMakine/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 CSRF_TRUSTED_ORIGINS = ['http://www.deryamakine.com', 'http://deryamakine.com', 'https://www.deryamakine.com', 'https://deryamakine.com']
 CORS_ALLOWED_ORIGINS = ['http://www.deryamakine.com', 'http://deryamakine.com', 'https://www.deryamakine.com', 'https://deryamakine.com']

@@ -136,7 +136,11 @@
             {% endif %}
         {% endfor %}
         <div class="col-lg-5">
-               <img src="{{ product.image.url }}" alt="" class="img-fluid">
+            {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.title }} Image" style="width: 250px; height: 250px;">
+            {% else %}
+                <img src="{% static 'img/empty.jpg' %}" alt="Empty Image" style="max-width: 100%;">
+            {% endif %}
         </div>
         <div class="col-lg-6">
             <div class="product-details-info">

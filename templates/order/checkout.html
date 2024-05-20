@@ -241,7 +241,11 @@
             <h1 style="text-align: center; margin-top: 20px;">Sepetim</h1>
             {% for shopcart in shopcarts %}
                 <div class="product">
-                    <img src="{{ shopcart.product.image.url }}" alt="Product 1">
+                    {% if product.image %}
+                        <img src="{{ shopcart.product.image.url }}" alt="Product 1">
+                    {% else %}
+                        <img src="{% static 'img/empty.jpg' %}" alt="Product 1">
+                    {% endif %}
                     <div class="product-details">
                         <h3>{{ shopcart.product.title }}</h3>
                         <p>Fiyat: {{ shopcart.product.price }}$</p>

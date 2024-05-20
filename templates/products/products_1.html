@@ -170,7 +170,7 @@
                     <div class="product-list">
                     {% for product in products %}
                         <div class="product-item" data-category="Tüm Ürünler">
-                            {% if product.image is not none %}
+                            {% if product.image %}
                                 <img src="{{ product.image.url }}" alt="{{ product.title }} Image" style="width: 250px; height: 250px;">
                             {% else %}
                                 <img src="{% static 'img/empty.jpg' %}" alt="Empty Image" style="max-width: 100%;">

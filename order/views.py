@@ -158,7 +158,7 @@ def index(request):
     return render(request, "order/basket.html", {'shopcarts': data})
 
 
-@login_required(login_url='/login')
+@login_required(login_url='login')
 def shop_cart_add(request, proid):
     url = request.META.get('HTTP_REFERER') # get last url
     form = ShopCartForm(request.POST or None)

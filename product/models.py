@@ -31,7 +31,7 @@ class Product(models.Model):
     titleEN = models.CharField(max_length=150, blank=True)
     keywords = models.CharField(max_length=255, blank=True)
     description = models.CharField(max_length=255, blank=True)
-    image = models.ImageField(blank=True, upload_to='product')
+    image = models.ImageField(blank=True, null=True, upload_to='product')
     price = models.FloatField()
     amount = models.IntegerField()
     status = models.BooleanField(default=True)
@@ -58,7 +58,7 @@ class Product(models.Model):
 
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, default=None, on_delete=models.CASCADE)
-    image = models.ImageField(blank=True, upload_to='product')
+    image = models.ImageField(blank=True, null=True, upload_to='product')
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
 

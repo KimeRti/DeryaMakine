@@ -14,7 +14,6 @@
       .category-link {
           cursor: pointer;
           font-weight: bold;
-          color: #cc0000; /* Kategori ismi rengi */
           text-decoration: none;
       }
 
@@ -198,7 +197,9 @@
           <div class="product-category">
             <h2>
               <span class="category-title">
-                {% if selected_category %}
+                {% if query %}
+                "{{ query }}" için arama sonuçları
+                {% elif selected_category %}
                 {{ selected_category.title }}
                 {% else %}
                 Tüm Ürünler
@@ -207,19 +208,7 @@
               <span class="category-indicator"></span>
             </h2>
             <div class="product-list">
-              {% if selected_category and subcategories %}
-                {% for subcategory in subcategories %}
-                <div class="product-item">
-                  {% if subcategory.image %}
-                  <img src="{{ subcategory.image.url }}" alt="{{ subcategory.title }} Image" style="width: 250px; height: 250px;">
-                  {% endif %}
-                  <div class="product-info">
-                    <h3>{{ subcategory.title }}</h3>
-                    <a href="{% url 'products_by_category' subcategory.id %}" class="btn btn-primary">Detaylar</a>
-                  </div>
-                </div>
-                {% endfor %}
-              {% else %}
+              {% if products %}
                 {% for product in products %}
                 <div class="product-item" data-category="Tüm Ürünler">
                   {% if product.image %}
@@ -234,6 +223,8 @@
                   </div>
                 </div>
                 {% endfor %}
+              {% else %}
+                <p>Aradığınız kriterlere uygun sonuç bulunamadı.</p>
               {% endif %}
             </div>
           </div>

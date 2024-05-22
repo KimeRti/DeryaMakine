@@ -41,4 +41,19 @@ def product_detail_view(request, pk):
     }
     return render(request, "products/product_details.html", data)
 
+def search_results(request):
+    query = request.GET.get('q')
+    products = Product.objects.filter(title__icontains=query) if query else Product.objects.none()
+    categories = Category.objects.filter(status=True, parent=None).order_by('order')
+    all_subcategories = {category.id: list(Category.objects.filter(parent=category).order_by('order').values('id', 'title')) for category in categories}
+    
+    data = {
+        'products': products,
+        'categories': categories,
+        'selected_category': None,
+        'subcategories': [],
+        'query': query,
+        'all_subcategories': json.dumps(all_subcategories),
+    }
+    return render(request, 'products/products_1.html', data)
 

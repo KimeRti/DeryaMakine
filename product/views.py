@@ -15,7 +15,7 @@ def products_view(request, category_id=None):
     if category_id:
         selected_category = get_object_or_404(Category, id=category_id)
         subcategories = Category.objects.filter(parent=selected_category)
-        if not subcategories:
+        if not subcategories.exists():
             products = Product.objects.filter(category=selected_category)
     elif query:
         products = Product.objects.filter(
@@ -29,9 +29,9 @@ def products_view(request, category_id=None):
     categories = Category.objects.filter(status=True, parent=None).order_by('order')
     all_subcategories = {}
     for category in categories:
-        subcategories = Category.objects.filter(parent=category).order_by('order')
+        subcategories_list = Category.objects.filter(parent=category).order_by('order')
         subcategory_list = []
-        for subcategory in subcategories:
+        for subcategory in subcategories_list:
             subcategory_list.append({
                 'id': subcategory.id,
                 'title': subcategory.title,
@@ -43,7 +43,7 @@ def products_view(request, category_id=None):
         'products': products,
         'categories': categories,
         'selected_category': selected_category,
-        'subcategories': subcategories if subcategories else None,
+        'subcategories': subcategories,
         'all_subcategories': json.dumps(all_subcategories),
         'query': query,
     }

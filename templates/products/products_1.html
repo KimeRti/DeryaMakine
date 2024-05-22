@@ -14,53 +14,66 @@
       .category-link {
         cursor: pointer;
       }
-      
+
       .sub-category-list {
         display: none;
       }
-      
+
       .fa-chevron-down {
         display: none;
         margin-right: 5px;
       }
-      
+
       .fa-chevron-right {
         display: inline-block;
         margin-right: 5px;
       }
-      
+
       .category-link.active + .sub-category-list {
         display: block;
       }
-      
+
       .category-link.active .fa-chevron-down {
         display: inline-block;
       }
-      
+
       .category-link.active .fa-chevron-right {
         display: none;
       }
-      
+
       .product-item {
         display: inline-block;
         margin: 10px;
       }
-      
+
       .product-info {
         text-align: center;
       }
-      
+
       .product-info h3 {
         margin: 10px 0;
       }
-      
+
       .product-info .product-price {
         font-weight: bold;
       }
 
-      
-      
-      </style>
+      .category-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .toggle-subcategories {
+        margin-left: 10px;
+        cursor: pointer;
+        background-color: transparent;
+        border: none;
+        color: blue;
+        text-decoration: underline;
+        font-size: 0.9em;
+      }
+    </style>
       
 
     
@@ -132,111 +145,112 @@
     <div class="row">
       <!-- Kategori Tablosu -->
       <div class="col-lg-3">
-          <div class="category-sidebar">
-              <div class="filter">
-                  <label for="filter-input">Filtrele:</label>
-                  <input type="text" id="filter-input" placeholder="Ara...">
-              </div>
-              <br>
-              <ul class="category-list">
-                  {% for category in categories %}
-                  <li class="category-item">
-                      <a class="category-link" href="{% url 'products_by_category' category.id %}">
-                          {{ category.title }}
-                      </a>
-                      <button class="toggle-subcategories" data-category-id="{{ category.id }}">Alt Kategorileri Göster</button>
-                      <ul class="sub-category-list" id="subcategories-{{ category.id }}" style="display: none;">
-                          {% for subcategory in subcategories %}
-                          {% if subcategory.parent == category %}
-                          <li class="sub-category-item">
-                              <a class="sub-category-link" href="{% url 'products_by_category' subcategory.id %}">
-                                  {{ subcategory.title }}
-                              </a>
-                          </li>
-                          {% endif %}
-                          {% endfor %}
-                      </ul>
-                  </li>
-                  {% endfor %}
-              </ul>
+        <div class="category-sidebar">
+          <div class="filter">
+            <label for="filter-input">Filtrele:</label>
+            <input type="text" id="filter-input" placeholder="Ara...">
           </div>
+          <br>
+          <ul class="category-list">
+            {% for category in categories %}
+            <li class="category-item">
+              <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                <a class="category-link" href="{% url 'products_by_category' category.id %}" style="flex-grow: 1;">
+                  {{ category.title }}
+                </a>
+                <button class="toggle-subcategories" data-category-id="{{ category.id }}">Alt Kategorileri Göster</button>
+              </div>
+              <ul class="sub-category-list" id="subcategories-{{ category.id }}" style="display: none; padding-left: 20px;">
+                {% for subcategory in subcategories %}
+                {% if subcategory.parent == category %}
+                <li class="sub-category-item">
+                  <a class="sub-category-link" href="{% url 'products_by_category' subcategory.id %}">
+                    {{ subcategory.title }}
+                  </a>
+                </li>
+                {% endif %}
+                {% endfor %}
+              </ul>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
       </div>
   
       <!-- Ürün Kataloğu -->
       <div class="col-lg-9">
-          <div class="product-catalog">
-              <div class="product-category">
-                  <h2>
-                      <span class="category-title">
-                          {% if selected_category %}
-                          {{ selected_category.title }} Ürünleri
-                          {% else %}
-                          Tüm Ürünler
-                          {% endif %}
-                      </span>
-                      <span class="category-indicator"></span>
-                  </h2>
-                  <div class="product-list">
-                      {% for product in products %}
-                      <div class="product-item" data-category="Tüm Ürünler">
-                          {% if product.image %}
-                          <img src="{{ product.image.url }}" alt="{{ product.title }} Image"
-                              style="width: 250px; height: 250px;">
-                          {% else %}
-                          <img src="{% static 'img/empty.jpg' %}" alt="Empty Image" style="max-width: 100%;">
-                          {% endif %}
-                          <div class="product-info">
-                              <h3>{{ product.title }}</h3>
-                              <p class="product-price">{{ product.price }}$</p>
-                              <a href="{% url 'productdetail' product.id %}" class="btn btn-primary">Detaylar</a>
-                          </div>
-                      </div>
-                      {% endfor %}
-                  </div>
+        <div class="product-catalog">
+          <div class="product-category">
+            <h2>
+              <span class="category-title">
+                {% if selected_category %}
+                {{ selected_category.title }} Ürünleri
+                {% else %}
+                Tüm Ürünler
+                {% endif %}
+              </span>
+              <span class="category-indicator"></span>
+            </h2>
+            <div class="product-list">
+              {% for product in products %}
+              <div class="product-item" data-category="Tüm Ürünler">
+                {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{{ product.title }} Image" style="width: 250px; height: 250px;">
+                {% else %}
+                <img src="{% static 'img/empty.jpg' %}" alt="Empty Image" style="max-width: 100%;">
+                {% endif %}
+                <div class="product-info">
+                  <h3>{{ product.title }}</h3>
+                  <p class="product-price">{{ product.price }}$</p>
+                  <a href="{% url 'productdetail' product.id %}" class="btn btn-primary">Detaylar</a>
+                </div>
               </div>
+              {% endfor %}
+            </div>
           </div>
+        </div>
       </div>
-  </div>
+    </div>
   
-  <script>
-  document.addEventListener("DOMContentLoaded", function() {
-      var toggleButtons = document.getElementsByClassName("toggle-subcategories");
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        var toggleButtons = document.getElementsByClassName("toggle-subcategories");
   
-      for (var i = 0; i < toggleButtons.length; i++) {
+        for (var i = 0; i < toggleButtons.length; i++) {
           toggleButtons[i].addEventListener("click", function() {
-              var categoryId = this.getAttribute("data-category-id");
-              var subCategoryList = document.getElementById("subcategories-" + categoryId);
+            var categoryId = this.getAttribute("data-category-id");
+            var subCategoryList = document.getElementById("subcategories-" + categoryId);
   
-              if (subCategoryList.style.display === "none") {
-                  subCategoryList.style.display = "block";
-                  this.textContent = "Alt Kategorileri Gizle";
-              } else {
-                  subCategoryList.style.display = "none";
-                  this.textContent = "Alt Kategorileri Göster";
-              }
+            if (subCategoryList.style.display === "none") {
+              subCategoryList.style.display = "block";
+              this.textContent = "Alt Kategorileri Gizle";
+            } else {
+              subCategoryList.style.display = "none";
+              this.textContent = "Alt Kategorileri Göster";
+            }
           });
-      }
+        }
   
-      var filterInput = document.getElementById("filter-input");
-      var categoryItems = document.getElementsByClassName("category-item");
+        var filterInput = document.getElementById("filter-input");
+        var categoryItems = document.getElementsByClassName("category-item");
   
-      filterInput.addEventListener("input", function() {
+        filterInput.addEventListener("input", function() {
           var filterValue = this.value.toLowerCase();
   
           for (var i = 0; i < categoryItems.length; i++) {
-              var categoryItem = categoryItems[i];
-              var categoryLink = categoryItem.querySelector(".category-link");
-              var categoryName = categoryLink.textContent.toLowerCase();
+            var categoryItem = categoryItems[i];
+            var categoryLink = categoryItem.querySelector(".category-link");
+            var categoryName = categoryLink.textContent.toLowerCase();
   
-              if (categoryName.includes(filterValue)) {
-                  categoryItem.style.display = "block";
-              } else {
-                  categoryItem.style.display = "none";
-              }
+            if (categoryName.includes(filterValue)) {
+              categoryItem.style.display = "block";
+            } else {
+              categoryItem.style.display = "none";
+            }
           }
+        });
       });
-  });
-  </script>
+    </script>
 
     <!-- Footer Start -->
     {% include '_partials/_footer.html' %}

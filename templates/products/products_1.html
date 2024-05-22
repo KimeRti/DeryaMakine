@@ -165,13 +165,7 @@
                 </button>
               </div>
               <ul class="sub-category-list" id="subcategories-{{ category.id }}">
-                {% for subcategory in all_subcategories[category.id] %}
-                <li class="sub-category-item">
-                  <a class="sub-category-link" href="#" data-category-id="{{ subcategory.id }}">
-                    {{ subcategory.title }}
-                  </a>
-                </li>
-                {% endfor %}
+                <!-- Alt kategoriler burada JavaScript ile yüklenecek -->
               </ul>
             </li>
             {% endfor %}
@@ -232,6 +226,7 @@
       document.addEventListener("DOMContentLoaded", function() {
         var categoryLinks = document.getElementsByClassName("category-link");
         var subCategoryLinks = document.getElementsByClassName("sub-category-link");
+        var allSubcategories = JSON.parse('{{ all_subcategories|escapejs }}');
   
         for (var i = 0; i < categoryLinks.length; i++) {
           categoryLinks[i].addEventListener("click", function(event) {
@@ -264,6 +259,27 @@
               subCategoryList.style.display = "block";
               icon.classList.remove("fa-chevron-right");
               icon.classList.add("fa-chevron-down");
+  
+              // Alt kategorileri yükle
+              subCategoryList.innerHTML = '';
+              var subcategories = allSubcategories[categoryId];
+              subcategories.forEach(function(subcategory) {
+                var li = document.createElement('li');
+                li.classList.add('sub-category-item');
+                li.innerHTML = '<a class="sub-category-link" href="#" data-category-id="' + subcategory.id + '">' + subcategory.title + '</a>';
+                subCategoryList.appendChild(li);
+              });
+  
+              // Alt kategori linklerini güncelle
+              var subCategoryLinks = subCategoryList.getElementsByClassName("sub-category-link");
+              for (var j = 0; j < subCategoryLinks.length; j++) {
+                subCategoryLinks[j].addEventListener("click", function(event) {
+                  event.preventDefault(); // Sayfa yenilenmesini önler
+                  var categoryId = this.getAttribute("data-category-id");
+                  var url = "{% url 'products_by_category' 0 %}".replace("0", categoryId);
+                  window.location.href = url;
+                });
+              }
             } else {
               subCategoryList.style.display = "none";
               icon.classList.remove("fa-chevron-down");

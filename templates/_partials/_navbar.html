@@ -1,6 +1,6 @@
 {% load static %}
 <style>
-    .navbar {
+.navbar {
     padding: 0;
 }
 
@@ -15,6 +15,7 @@
 
 .navbar-nav .nav-link {
     color: #555;
+    padding: 0 15px;
     transition: color 0.3s ease;
 }
 
@@ -36,6 +37,7 @@
 
 .navbar-nav .btn-primary {
     transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 20px;
 }
 
 .navbar-nav .btn-primary:hover {
@@ -44,15 +46,16 @@
 }
 
 .form-control {
-    border-radius: 30px;
+    border-radius: 20px;
     padding-left: 20px;
     padding-right: 20px;
 }
 
 .btn {
-    border-radius: 30px;
+    border-radius: 20px;
 }
 </style>
+{% load static %}
 <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
     <div class="container-fluid">
         <a href="{% url 'home' %}" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
@@ -66,27 +69,27 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav ms-auto p-4 p-lg-0">
                 <li class="nav-item">
-                    <a href="{% url 'home' %}" class="nav-link py-4 px-lg-5{% if url == 'home' %} active{% endif %}">Ana Sayfa</a>
+                    <a href="{% url 'home' %}" class="nav-link py-4 px-lg-3{% if url == 'home' %} active{% endif %}">Ana Sayfa</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{% url 'contact' %}" class="nav-link py-4 px-lg-5{% if url == 'contact' %} active{% endif %}">İletişim</a>
+                    <a href="{% url 'contact' %}" class="nav-link py-4 px-lg-3{% if url == 'contact' %} active{% endif %}">İletişim</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{% url 'about' %}" class="nav-link py-4 px-lg-5{% if url == 'about' %} active{% endif %}">Hakkımızda</a>
+                    <a href="{% url 'about' %}" class="nav-link py-4 px-lg-3{% if url == 'about' %} active{% endif %}">Hakkımızda</a>
                 </li>
                 <li class="nav-item">
-                    <a href="https://demacimportexport.com" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+                    <a href="https://demacimportexport.com" class="nav-link py-4 px-lg-3">
                         <img src="{% static 'img/demaclogo.png' %}" alt="dlogo" style="max-width: 100px; height: auto;">
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{% url 'products' %}" class="btn btn-outline-secondary py-4 px-lg-5 nav-link2">
+                    <a href="{% url 'products' %}" class="nav-link py-4 px-lg-3">
                         <i class="fa fa-shopping-cart me-2"></i>Ürünler
                     </a>
                 </li>
                 {% if request.user.is_authenticated %}
                     <li class="nav-item">
-                        <a href="{% url 'order' %}" class="btn btn-outline-secondary py-4 px-lg-5 nav-link2">
+                        <a href="{% url 'order' %}" class="nav-link py-4 px-lg-3">
                             <i class="fa fa-shopping-basket me-2"></i>Sepet
                             <span class="badge bg-danger rounded-pill ms-1">{{ request.session.cart_items }}</span>
                         </a>
@@ -100,8 +103,8 @@
                 </li>
                 {% if not request.user.is_authenticated %}
                     <li class="nav-item">
-                        <a href="{% url 'register' %}" class="btn btn-primary py-4 px-lg-5">
-                            <i class="fa fa-user me-2"></i>Kayıt Ol<i class="fa fa-arrow-right ms-3"></i>
+                        <a href="{% url 'register' %}" class="btn btn-primary py-2 px-lg-3 ms-lg-3">
+                            <i class="fa fa-user me-2"></i>Kayıt Ol<i class="fa fa-arrow-right ms-2"></i>
                         </a>
                     </li>
                 {% endif %}
@@ -109,3 +112,4 @@
         </div>
     </div>
 </nav>
+

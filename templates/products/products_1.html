@@ -173,7 +173,7 @@
             {% for category in categories %}
             <li class="category-item">
               <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
-                <a class="category-link" href="#" data-category-id="{{ category.id }}" style="flex-grow: 1;">
+                <a class="category-link" href="{% url 'products_by_category' category.id %}" style="flex-grow: 1;">
                   {{ category.title }}
                 </a>
                 <button class="toggle-subcategories" data-category-id="{{ category.id }}">
@@ -195,9 +195,7 @@
           <div class="product-category">
             <h2>
               <span class="category-title">
-                {% if query %}
-                "{{ query }}" için arama sonuçları
-                {% elif selected_category %}
+                {% if selected_category %}
                 {{ selected_category.title }}
                 {% else %}
                 Tüm Ürünler
@@ -206,7 +204,19 @@
               <span class="category-indicator"></span>
             </h2>
             <div class="product-list">
-              {% if products %}
+              {% if subcategories %}
+                {% for subcategory in subcategories %}
+                <div class="product-item">
+                  {% if subcategory.image %}
+                  <img src="{{ subcategory.image.url }}" alt="{{ subcategory.title }} Image" style="width: 250px; height: 250px;">
+                  {% endif %}
+                  <div class="product-info">
+                    <h3>{{ subcategory.title }}</h3>
+                    <a href="{% url 'products_by_category' subcategory.id %}" class="btn btn-primary">Detaylar</a>
+                  </div>
+                </div>
+                {% endfor %}
+              {% else %}
                 {% for product in products %}
                 <div class="product-item" data-category="Tüm Ürünler">
                   {% if product.image %}
@@ -221,8 +231,6 @@
                   </div>
                 </div>
                 {% endfor %}
-              {% else %}
-                <p>Aradığınız kriterlere uygun sonuç bulunamadı.</p>
               {% endif %}
             </div>
           </div>
@@ -274,20 +282,9 @@
               subcategories.forEach(function(subcategory) {
                 var li = document.createElement('li');
                 li.classList.add('sub-category-item');
-                li.innerHTML = '<a class="sub-category-link" href="#" data-category-id="' + subcategory.id + '">' + subcategory.title + '</a>';
+                li.innerHTML = '<a class="sub-category-link" href="{% url 'products_by_category' ' + subcategory.id + ' %}">' + subcategory.title + '</a>';
                 subCategoryList.appendChild(li);
               });
-  
-              // Alt kategori linklerini güncelle
-              var subCategoryLinks = subCategoryList.getElementsByClassName("sub-category-link");
-              for (var j = 0; j < subCategoryLinks.length; j++) {
-                subCategoryLinks[j].addEventListener("click", function(event) {
-                  event.preventDefault(); // Sayfa yenilenmesini önler
-                  var categoryId = this.getAttribute("data-category-id");
-                  var url = "{% url 'products_by_category' 0 %}".replace("0", categoryId);
-                  window.location.href = url;
-                });
-              }
             } else {
               subCategoryList.style.display = "none";
               icon.classList.remove("fa-chevron-down");

@@ -25,6 +25,11 @@
     height: auto; /* Orantılı yükseklik için otomatik ayarla */
     padding-right: 5px;
 }
+.logo-imgdemac{
+    max-width: 200px; /* İstenilen genişlik değeri */
+    height: auto; /* Orantılı yükseklik için otomatik ayarla */
+    padding-right: 5px;
+}
 
 .fact {
     /* Diğer özellikler */

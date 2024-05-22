@@ -224,7 +224,7 @@
           categoryLinks[i].addEventListener("click", function(event) {
             event.preventDefault(); // Sayfa yenilenmesini önler
             var categoryId = this.getAttribute("data-category-id");
-            var url = "{% url 'products_by_category' 'CATEGORY_ID_PLACEHOLDER' %}".replace("CATEGORY_ID_PLACEHOLDER", categoryId);
+            var url = "{% url 'products_by_category' 0 %}".replace("0", categoryId);
             window.location.href = url;
           });
         }

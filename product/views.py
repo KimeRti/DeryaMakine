@@ -5,12 +5,12 @@ from django.core.serializers import serialize
 import json
 
 def products_view(request, category_id=None):
-    categories = Category.objects.filter(status=True, parent=None).order_by('order')
-    all_subcategories = {category.id: list(Category.objects.filter(parent=category).values('id', 'title')) for category in categories}
+    categories = Category.objects.filter(status=True, parent=None).order_by('order')  # Sıralama
+    all_subcategories = {category.id: list(Category.objects.filter(parent=category).order_by('order').values('id', 'title')) for category in categories}
     
     if category_id:
         selected_category = get_object_or_404(Category, id=category_id)
-        subcategories = Category.objects.filter(parent=selected_category)
+        subcategories = Category.objects.filter(parent=selected_category).order_by('order')
         if subcategories.exists():
             products = []
         else:

@@ -6,29 +6,24 @@ import json
 from django.db.models import Q
 
 def products_view(request, category_id=None):
-    categories = Category.objects.filter(status=True, parent=None).order_by('order')  # Sıralama
-    all_subcategories = {category.id: list(Category.objects.filter(parent=category).order_by('order').values('id', 'title')) for category in categories}
-    
+    selected_category = None
+    subcategories = []
     if category_id:
         selected_category = get_object_or_404(Category, id=category_id)
-        subcategories = Category.objects.filter(parent=selected_category).order_by('order')
-        if subcategories.exists():
-            products = []
-        else:
-            products = Product.objects.filter(category=selected_category)
-    else:
-        selected_category = None
-        subcategories = []
-        products = Product.objects.all()
-    
-    data = {
-        "products": products,
-        "categories": categories,
-        "subcategories": subcategories,
-        "selected_category": selected_category,
-        "all_subcategories": json.dumps(all_subcategories)
+        subcategories = Category.objects.filter(parent=selected_category)
+
+    products = Product.objects.all()
+    categories = Category.objects.filter(status=True, parent=None).order_by('order')
+    all_subcategories = {category.id: list(Category.objects.filter(parent=category).order_by('order').values('id', 'title')) for category in categories}
+
+    context = {
+        'products': products,
+        'categories': categories,
+        'selected_category': selected_category,
+        'subcategories': subcategories,
+        'all_subcategories': json.dumps(all_subcategories)
     }
-    return render(request, "products/products_1.html", data)
+    return render(request, 'products/products_1.html', context)
 
 
 def product_detail_view(request, pk):

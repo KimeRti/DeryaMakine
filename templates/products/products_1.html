@@ -260,6 +260,45 @@
           }
         });
       });
+      var toggleButtons = document.getElementsByClassName("toggle-subcategories");
+
+    for (var i = 0; i < toggleButtons.length; i++) {
+      toggleButtons[i].addEventListener("click", function(event) {
+        event.preventDefault(); // Sayfa yenilenmesini önler
+        var categoryId = this.getAttribute("data-category-id");
+        var subCategoryList = document.getElementById("subcategories-" + categoryId);
+        var icon = this.querySelector("i");
+
+        if (subCategoryList.style.display === "none" || subCategoryList.style.display === "") {
+          subCategoryList.style.display = "block";
+          icon.classList.remove("fa-chevron-right");
+          icon.classList.add("fa-chevron-down");
+        } else {
+          subCategoryList.style.display = "none";
+          icon.classList.remove("fa-chevron-down");
+          icon.classList.add("fa-chevron-right");
+        }
+      });
+    }
+
+    var filterInput = document.getElementById("filter-input");
+    var categoryItems = document.getElementsByClassName("category-item");
+
+    filterInput.addEventListener("input", function() {
+      var filterValue = this.value.toLowerCase();
+
+      for (var i = 0; i < categoryItems.length; i++) {
+        var categoryItem = categoryItems[i];
+        var categoryLink = categoryItem.querySelector(".category-link");
+        var categoryName = categoryLink.textContent.toLowerCase();
+
+        if (categoryName.includes(filterValue)) {
+          categoryItem.style.display = "block";
+        } else {
+          categoryItem.style.display = "none";
+        }
+      }
+    });
     </script>
   
 

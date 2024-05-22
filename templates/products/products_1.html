@@ -282,7 +282,7 @@
               subcategories.forEach(function(subcategory) {
                 var li = document.createElement('li');
                 li.classList.add('sub-category-item');
-                li.innerHTML = '<a class="sub-category-link" href="{% url 'products_by_category' ' + subcategory.id + ' %}">' + subcategory.title + '</a>';
+                li.innerHTML = '<a class="sub-category-link" href="{% url "products_by_category" ' + subcategory.id + ' %}">' + subcategory.title + '</a>';
                 subCategoryList.appendChild(li);
               });
             } else {

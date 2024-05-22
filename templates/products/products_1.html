@@ -182,7 +182,7 @@
               <span class="category-indicator"></span>
             </h2>
             <div class="product-list">
-              {% if selected_category %}
+              {% if selected_category and subcategories %}
                 {% for subcategory in subcategories %}
                 <div class="product-item">
                   {% if subcategory.image %}

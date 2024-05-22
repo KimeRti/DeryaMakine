@@ -8,7 +8,10 @@ def products_view(request, category_id=None):
     if category_id:
         selected_category = get_object_or_404(Category, id=category_id)
         subcategories = Category.objects.filter(parent=selected_category)
-        products = []
+        if subcategories.exists():
+            products = []
+        else:
+            products = Product.objects.filter(category=selected_category)
     else:
         selected_category = None
         subcategories = []

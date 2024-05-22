@@ -25,6 +25,19 @@ class Category(models.Model):
             full_path.append(k.title)
             k = k.parent
         return ' -> '.join(full_path[::-1])
+    
+    def get_descendants(self, include_self=True):
+        descendants = []
+        nodes = [self]
+        if include_self:
+            descendants.append(self)
+        while nodes:
+            node = nodes.pop(0)
+            children = list(node.children.all())
+            descendants.extend(children)
+            nodes.extend(children)
+        return descendants
+
 
 
 class Product(models.Model):

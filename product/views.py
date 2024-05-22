@@ -8,7 +8,8 @@ def products_view(request, category_id=None):
     
     if category_id:
         selected_category = get_object_or_404(Category, id=category_id)
-        products = Product.objects.filter(category__in=selected_category.get_descendants(include_self=True))
+        descendant_categories = selected_category.get_descendants()
+        products = Product.objects.filter(category__in=descendant_categories)
     else:
         products = Product.objects.all()
     

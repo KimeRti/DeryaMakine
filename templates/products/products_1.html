@@ -24,7 +24,8 @@
 
       .sub-category-list {
           display: none;
-          padding-left: 20px;
+          padding-left: 15px; /* Alt kategorilerin hizalanması için padding */
+          list-style: none; /* Noktaları kaldır */
       }
 
       .fa-chevron-down, .fa-chevron-right {
@@ -33,10 +34,14 @@
       }
 
       .category-item {
+          display: block; /* Flex düzenini kaldır */
+          padding: 5px 0;
+      }
+
+      .category-item > div {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding: 5px 0;
       }
 
       .toggle-subcategories {
@@ -49,6 +54,20 @@
       }
 
       .toggle-subcategories:hover {
+          text-decoration: underline;
+      }
+
+      .sub-category-item {
+          margin-left: 20px; /* Alt kategorilerin hizalanması */
+          padding: 2px 0; /* Alt kategorilerin aralığı */
+      }
+
+      .sub-category-link {
+          color: #cc0000; /* Alt kategori ismi rengi */
+          text-decoration: none;
+      }
+
+      .sub-category-link:hover {
           text-decoration: underline;
       }
 

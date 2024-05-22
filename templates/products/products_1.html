@@ -13,32 +13,43 @@
     <style>
       .category-link {
         cursor: pointer;
+        font-weight: bold;
+        color: #cc0000; /* Kategori ismi rengi */
+        text-decoration: none;
+      }
+
+      .category-link:hover {
+        text-decoration: underline;
       }
 
       .sub-category-list {
         display: none;
+        padding-left: 20px;
       }
 
-      .fa-chevron-down {
-        display: none;
-        margin-right: 5px;
+      .fa-chevron-down, .fa-chevron-right {
+        margin-left: 5px;
+        font-size: 0.8em;
       }
 
-      .fa-chevron-right {
-        display: inline-block;
-        margin-right: 5px;
+      .category-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5px 0;
       }
 
-      .category-link.active + .sub-category-list {
-        display: block;
+      .toggle-subcategories {
+        background-color: transparent;
+        border: none;
+        color: #007bff;
+        cursor: pointer;
+        font-size: 0.9em;
+        text-decoration: none;
       }
 
-      .category-link.active .fa-chevron-down {
-        display: inline-block;
-      }
-
-      .category-link.active .fa-chevron-right {
-        display: none;
+      .toggle-subcategories:hover {
+        text-decoration: underline;
       }
 
       .product-item {
@@ -57,23 +68,8 @@
       .product-info .product-price {
         font-weight: bold;
       }
-
-      .category-item {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-
-      .toggle-subcategories {
-        margin-left: 10px;
-        cursor: pointer;
-        background-color: transparent;
-        border: none;
-        color: blue;
-        text-decoration: underline;
-        font-size: 0.9em;
-      }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
       
 
     
@@ -154,24 +150,24 @@
           <ul class="category-list">
             {% for category in categories %}
             <li class="category-item">
-              <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
-                <a class="category-link" href="{% url 'products_by_category' category.id %}" style="flex-grow: 1;">
-                  {{ category.title }}
-                </a>
-                <button class="toggle-subcategories" data-category-id="{{ category.id }}">Alt Kategorileri Göster</button>
-              </div>
-              <ul class="sub-category-list" id="subcategories-{{ category.id }}" style="display: none; padding-left: 20px;">
-                {% for subcategory in subcategories %}
-                {% if subcategory.parent == category %}
-                <li class="sub-category-item">
-                  <a class="sub-category-link" href="{% url 'products_by_category' subcategory.id %}">
-                    {{ subcategory.title }}
-                  </a>
-                </li>
-                {% endif %}
-                {% endfor %}
-              </ul>
+              <a class="category-link" href="{% url 'products_by_category' category.id %}">
+                {{ category.title }}
+              </a>
+              <button class="toggle-subcategories" data-category-id="{{ category.id }}">
+                <i class="fas fa-chevron-right"></i>
+              </button>
             </li>
+            <ul class="sub-category-list" id="subcategories-{{ category.id }}">
+              {% for subcategory in subcategories %}
+              {% if subcategory.parent == category %}
+              <li class="sub-category-item">
+                <a class="sub-category-link" href="{% url 'products_by_category' subcategory.id %}">
+                  {{ subcategory.title }}
+                </a>
+              </li>
+              {% endif %}
+              {% endfor %}
+            </ul>
             {% endfor %}
           </ul>
         </div>
@@ -217,16 +213,20 @@
         var toggleButtons = document.getElementsByClassName("toggle-subcategories");
   
         for (var i = 0; i < toggleButtons.length; i++) {
-          toggleButtons[i].addEventListener("click", function() {
+          toggleButtons[i].addEventListener("click", function(event) {
+            event.preventDefault(); // Sayfa yenilenmesini önler
             var categoryId = this.getAttribute("data-category-id");
             var subCategoryList = document.getElementById("subcategories-" + categoryId);
+            var icon = this.querySelector("i");
   
-            if (subCategoryList.style.display === "none") {
+            if (subCategoryList.style.display === "none" || subCategoryList.style.display === "") {
               subCategoryList.style.display = "block";
-              this.textContent = "Alt Kategorileri Gizle";
+              icon.classList.remove("fa-chevron-right");
+              icon.classList.add("fa-chevron-down");
             } else {
               subCategoryList.style.display = "none";
-              this.textContent = "Alt Kategorileri Göster";
+              icon.classList.remove("fa-chevron-down");
+              icon.classList.add("fa-chevron-right");
             }
           });
         }

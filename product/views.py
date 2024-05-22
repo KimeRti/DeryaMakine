@@ -19,7 +19,7 @@ def products_view(request, category_id=None):
         products = Product.objects.all()
 
     categories = Category.objects.filter(status=True, parent=None).order_by('order')
-    all_subcategories = {category.id: list(Category.objects.filter(parent=category).order_by('order').values('id', 'title')) for category in categories}
+    all_subcategories = {category.id: list(Category.objects.filter(parent=category).order_by('order').values('id', 'title', 'slug')) for category in categories}
 
     context = {
         'products': products,

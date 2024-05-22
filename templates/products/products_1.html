@@ -12,61 +12,69 @@
 
     <style>
       .category-link {
-        cursor: pointer;
-        font-weight: bold;
-        text-decoration: none;
+          cursor: pointer;
+          font-weight: bold;
+          color: #cc0000; /* Kategori ismi rengi */
+          text-decoration: none;
       }
 
       .category-link:hover {
-        text-decoration: underline;
+          text-decoration: underline;
       }
 
       .sub-category-list {
-        display: none;
-        padding-left: 20px;
+          display: none;
+          padding-left: 20px;
       }
 
       .fa-chevron-down, .fa-chevron-right {
-        margin-left: 5px;
-        font-size: 0.8em;
+          margin-left: 5px;
+          font-size: 0.8em;
       }
 
       .category-item {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 5px 0;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 5px 0;
       }
 
       .toggle-subcategories {
-        background-color: transparent;
-        border: none;
-        color: #007bff;
-        cursor: pointer;
-        font-size: 0.9em;
-        text-decoration: none;
+          background-color: transparent;
+          border: none;
+          color: #007bff;
+          cursor: pointer;
+          font-size: 0.9em;
+          text-decoration: none;
       }
 
       .toggle-subcategories:hover {
-        text-decoration: underline;
+          text-decoration: underline;
       }
 
       .product-item {
-        display: inline-block;
-        margin: 10px;
+          display: inline-block;
+          margin: 10px;
       }
 
       .product-info {
-        text-align: center;
+          text-align: center;
       }
 
       .product-info h3 {
-        margin: 10px 0;
+          margin: 10px 0;
       }
 
       .product-info .product-price {
-        font-weight: bold;
+          font-weight: bold;
       }
+
+      .subcategory-products {
+          margin-left: 20px;
+          padding-left: 20px;
+          border-left: 2px solid #ccc;
+      }
+  </style>
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
       
@@ -149,24 +157,26 @@
           <ul class="category-list">
             {% for category in categories %}
             <li class="category-item">
-              <a class="category-link" href="{% url 'products_by_category' category.id %}">
-                {{ category.title }}
-              </a>
-              <button class="toggle-subcategories" data-category-id="{{ category.id }}">
-                <i class="fas fa-chevron-right"></i>
-              </button>
-            </li>
-            <ul class="sub-category-list" id="subcategories-{{ category.id }}">
-              {% for subcategory in subcategories %}
-              {% if subcategory.parent == category %}
-              <li class="sub-category-item">
-                <a class="sub-category-link" href="{% url 'products_by_category' subcategory.id %}">
-                  {{ subcategory.title }}
+              <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                <a class="category-link" href="#" data-category-id="{{ category.id }}" style="flex-grow: 1;">
+                  {{ category.title }}
                 </a>
-              </li>
-              {% endif %}
-              {% endfor %}
-            </ul>
+                <button class="toggle-subcategories" data-category-id="{{ category.id }}">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+              </div>
+              <ul class="sub-category-list" id="subcategories-{{ category.id }}">
+                {% for subcategory in subcategories %}
+                {% if subcategory.parent == category %}
+                <li class="sub-category-item">
+                  <a class="sub-category-link" href="{% url 'products_by_category' subcategory.id %}">
+                    {{ subcategory.title }}
+                  </a>
+                </li>
+                {% endif %}
+                {% endfor %}
+              </ul>
+            </li>
             {% endfor %}
           </ul>
         </div>
@@ -209,6 +219,22 @@
   
     <script>
       document.addEventListener("DOMContentLoaded", function() {
+        var categoryLinks = document.getElementsByClassName("category-link");
+  
+        for (var i = 0; i < categoryLinks.length; i++) {
+          categoryLinks[i].addEventListener("click", function(event) {
+            event.preventDefault(); // Sayfa yenilenmesini önler
+            var categoryId = this.getAttribute("data-category-id");
+            var subCategoryList = document.getElementById("subcategories-" + categoryId);
+  
+            if (subCategoryList.style.display === "none" || subCategoryList.style.display === "") {
+              subCategoryList.style.display = "block";
+            } else {
+              subCategoryList.style.display = "none";
+            }
+          });
+        }
+  
         var toggleButtons = document.getElementsByClassName("toggle-subcategories");
   
         for (var i = 0; i < toggleButtons.length; i++) {

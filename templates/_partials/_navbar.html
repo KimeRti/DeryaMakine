@@ -65,6 +65,12 @@
 .register-button {
     font-size: 0.9rem; /* Düğme boyutunu küçültmek için */
 }
+
+.d-flex.align-items-center {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
 </style>
 {% load static %}
 <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
@@ -106,7 +112,7 @@
                         </a>
                     </li>
                 {% endif %}
-                <li class="nav-item">
+                <li class="nav-item d-flex align-items-center">
                     <form class="d-flex" method="get" action="{% url 'search_results' %}">
                         <input class="form-control me-2 search-input" type="search" placeholder="Ara" aria-label="Ara" name="q" value="{{ request.GET.q }}">
                         <button class="btn btn-outline-success search-button" type="submit">ARA</button>
@@ -123,4 +129,3 @@
         </div>
     </div>
 </nav>
-

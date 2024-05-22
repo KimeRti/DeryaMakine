@@ -1,15 +1,22 @@
-from django.shortcuts import render
-from django.shortcuts import render, redirect
-
 from order.models import ShopCartForm
 from .models import Product, Category
+from django.shortcuts import render, get_object_or_404
 
-
-def products_view(request):
+def products_view(request, category_id=None):
+    categories = Category.objects.filter(status=True, parent=None).order_by('order')
+    subcategories = Category.objects.filter(status=True).exclude(parent=None).order_by('order')
+    
+    if category_id:
+        selected_category = get_object_or_404(Category, id=category_id)
+        products = Product.objects.filter(category__in=selected_category.get_descendants(include_self=True))
+    else:
+        products = Product.objects.all()
+    
     data = {
-        "products": Product.objects.all(),
-        "categories": Category.objects.filter(status=True, parent=None),
-        "subcategories": Category.objects.filter(status=True).exclude(parent=None)
+        "products": products,
+        "categories": categories,
+        "subcategories": subcategories,
+        "selected_category": selected_category if category_id else None
     }
     return render(request, "products/products_1.html", data)
 

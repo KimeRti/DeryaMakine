@@ -132,104 +132,113 @@
     <div class="row">
       <!-- Kategori Tablosu -->
       <div class="col-lg-3">
-        <div class="category-sidebar">
-          <div class="filter">
-            <label for="filter-input">Filtrele:</label>
-            <input type="text" id="filter-input" placeholder="Ara...">
-          </div>
-          <br>
-          <ul class="category-list">
-              {% for category in categories %}
-            <li class="category-item">
-              <a class="category-link" href="#">{{ category.title }}<i class="fas fa-chevron-right"></i></a>
-              <ul class="sub-category-list">
-                  {% for subcategory in subcategories %}
-                    {% if subcategory.parent == category %}
-                <li class="sub-category-item">
-                  <a class="sub-category-link" href="#">{{ subcategory.title }}</a>
-                </li>
-                    {% endif %}
+          <div class="category-sidebar">
+              <div class="filter">
+                  <label for="filter-input">Filtrele:</label>
+                  <input type="text" id="filter-input" placeholder="Ara...">
+              </div>
+              <br>
+              <ul class="category-list">
+                  {% for category in categories %}
+                  <li class="category-item">
+                      <a class="category-link" href="{% url 'products_by_category' category.id %}">
+                          {{ category.title }}
+                          <i class="fas fa-chevron-right"></i>
+                      </a>
+                      <ul class="sub-category-list">
+                          {% for subcategory in subcategories %}
+                          {% if subcategory.parent == category %}
+                          <li class="sub-category-item">
+                              <a class="sub-category-link" href="{% url 'products_by_category' subcategory.id %}">
+                                  {{ subcategory.title }}
+                              </a>
+                          </li>
+                          {% endif %}
+                          {% endfor %}
+                      </ul>
+                  </li>
                   {% endfor %}
               </ul>
-            </li>
-          {% endfor %}
-          </ul>
-        </div>
+          </div>
       </div>
-      
-      
-    
-     <!-- Ürün Kataloğu -->
-    <div class="col-lg-9">
-            <div class="product-catalog">
-                <div class="product-category">
-                    <h2>
-                        <span class="category-title">Tüm Ürünler</span>
-                        <span class="category-indicator"></span>
-                    </h2>
-                    <div class="product-list">
-                    {% for product in products %}
-                        <div class="product-item" data-category="Tüm Ürünler">
-                            {% if product.image %}
-                                <img src="{{ product.image.url }}" alt="{{ product.title }} Image" style="width: 250px; height: 250px;">
-                            {% else %}
-                                <img src="{% static 'img/empty.jpg' %}" alt="Empty Image" style="max-width: 100%;">
-                            {% endif %}
-                            <div class="product-info">
-                                <h3>{{ product.title }}</h3>
-                                <p class="product-price">{{ product.price }}$</p>
-                                <a href="{% url 'productdetail' product.id  %}" class="btn btn-primary">Detaylar</a>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
+  
+      <!-- Ürün Kataloğu -->
+      <div class="col-lg-9">
+          <div class="product-catalog">
+              <div class="product-category">
+                  <h2>
+                      <span class="category-title">
+                          {% if selected_category %}
+                          {{ selected_category.title }} Ürünleri
+                          {% else %}
+                          Tüm Ürünler
+                          {% endif %}
+                      </span>
+                      <span class="category-indicator"></span>
+                  </h2>
+                  <div class="product-list">
+                      {% for product in products %}
+                      <div class="product-item" data-category="Tüm Ürünler">
+                          {% if product.image %}
+                          <img src="{{ product.image.url }}" alt="{{ product.title }} Image"
+                              style="width: 250px; height: 250px;">
+                          {% else %}
+                          <img src="{% static 'img/empty.jpg' %}" alt="Empty Image" style="max-width: 100%;">
+                          {% endif %}
+                          <div class="product-info">
+                              <h3>{{ product.title }}</h3>
+                              <p class="product-price">{{ product.price }}$</p>
+                              <a href="{% url 'productdetail' product.id %}" class="btn btn-primary">Detaylar</a>
+                          </div>
+                      </div>
+                      {% endfor %}
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
       var categoryLinks = document.getElementsByClassName("category-link");
       var i;
-
+  
       for (i = 0; i < categoryLinks.length; i++) {
-        categoryLinks[i].addEventListener("click", function() {
-          this.classList.toggle("active");
-          var subCategoryList = this.nextElementSibling;
-          if (subCategoryList.style.display === "block") {
-            subCategoryList.style.display = "none";
-          } else {
-            subCategoryList.style.display = "block";
-          }
-
-          var chevronIcon = this.querySelector('i');
-          chevronIcon.classList.toggle('fa-chevron-down');
-          chevronIcon.classList.toggle('fa-chevron-right');
-        });
+          categoryLinks[i].addEventListener("click", function () {
+              this.classList.toggle("active");
+              var subCategoryList = this.nextElementSibling;
+              if (subCategoryList.style.display === "block") {
+                  subCategoryList.style.display = "none";
+              } else {
+                  subCategoryList.style.display = "block";
+              }
+  
+              var chevronIcon = this.querySelector('i');
+              chevronIcon.classList.toggle('fa-chevron-down');
+              chevronIcon.classList.toggle('fa-chevron-right');
+          });
       }
-
+  
       var filterInput = document.getElementById("filter-input");
       var categoryItems = document.getElementsByClassName("category-item");
-
-      filterInput.addEventListener("input", function() {
-        var filterValue = this.value.toLowerCase();
-
-        for (var i = 0; i < categoryItems.length; i++) {
-          var categoryItem = categoryItems[i];
-          var categoryLink = categoryItem.querySelector(".category-link");
-          var categoryName = categoryLink.textContent.toLowerCase();
-
-          if (categoryName.includes(filterValue)) {
-            categoryItem.style.display = "block";
-          } else {
-            categoryItem.style.display = "none";
+  
+      filterInput.addEventListener("input", function () {
+          var filterValue = this.value.toLowerCase();
+  
+          for (var i = 0; i < categoryItems.length; i++) {
+              var categoryItem = categoryItems[i];
+              var categoryLink = categoryItem.querySelector(".category-link");
+              var categoryName = categoryLink.textContent.toLowerCase();
+  
+              if (categoryName.includes(filterValue)) {
+                  categoryItem.style.display = "block";
+              } else {
+                  categoryItem.style.display = "none";
+              }
           }
-        }
       });
-    });
-    </script>
+  });
+  </script>
 
     <!-- Footer Start -->
     {% include '_partials/_footer.html' %}

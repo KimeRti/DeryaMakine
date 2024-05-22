@@ -9,12 +9,14 @@ class Category(models.Model):
     image = models.ImageField(blank=True, upload_to='category')
     slug = models.SlugField(max_length=160, unique=True)
     status = models.BooleanField(default=True)
+    order = models.IntegerField(default=0)  # Sıralama için yeni alan
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         unique_together = ('slug', 'parent',)
         verbose_name_plural = 'categories'
+        ordering = ['order']  # Sıralama için
 
     def __str__(self):
         full_path = [self.title]

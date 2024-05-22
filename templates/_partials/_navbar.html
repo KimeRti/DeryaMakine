@@ -14,7 +14,7 @@
             <a href="{% url 'contact' %}" class="nav-item nav-link py-4 px-lg-5 d-none d-lg-block{% if url == 'contact' %} active{% endif %}">İletişim</a>
             <a href="{% url 'about' %}" class="nav-item nav-link py-4 px-lg-5 d-none d-lg-block{% if url == 'about' %} active{% endif %}">Hakkımızda</a>
             <a href="https://demacimportexport.com" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-                <img src="{% static 'img/logo.png' %}" alt="dlogo" style="max-width: 150px; height: auto; padding-right: 5px;">
+                <img src="{% static 'img/demaclogo.png' %}" alt="dlogo" style="max-width: 150px; height: auto; padding-right: 5px;">
             </a>
             <a href="{% url 'products' %}" class="btn btn-outline-secondary py-4 px-lg-5 d-none d-lg-block nav-link2 "><i class="fa fa-shopping-cart me-xxl-1"></i>Ürünler</a>
             {% if request.user.is_authenticated %}

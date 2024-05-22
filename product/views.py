@@ -19,7 +19,17 @@ def products_view(request, category_id=None):
         products = Product.objects.all()
 
     categories = Category.objects.filter(status=True, parent=None).order_by('order')
-    all_subcategories = {category.id: list(Category.objects.filter(parent=category).order_by('order').values('id', 'title', 'slug')) for category in categories}
+    all_subcategories = {}
+    for category in categories:
+        subcategories = Category.objects.filter(parent=category).order_by('order')
+        subcategory_list = []
+        for subcategory in subcategories:
+            subcategory_list.append({
+                'id': subcategory.id,
+                'title': subcategory.title,
+                'url': reverse('products_by_category', args=[subcategory.id])
+            })
+        all_subcategories[category.id] = subcategory_list
 
     context = {
         'products': products,

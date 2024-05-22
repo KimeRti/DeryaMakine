@@ -143,9 +143,9 @@
                   <li class="category-item">
                       <a class="category-link" href="{% url 'products_by_category' category.id %}">
                           {{ category.title }}
-                          <i class="fas fa-chevron-right"></i>
                       </a>
-                      <ul class="sub-category-list">
+                      <button class="toggle-subcategories" data-category-id="{{ category.id }}">Alt Kategorileri Göster</button>
+                      <ul class="sub-category-list" id="subcategories-{{ category.id }}" style="display: none;">
                           {% for subcategory in subcategories %}
                           {% if subcategory.parent == category %}
                           <li class="sub-category-item">
@@ -199,30 +199,28 @@
   </div>
   
   <script>
-  document.addEventListener("DOMContentLoaded", function () {
-      var categoryLinks = document.getElementsByClassName("category-link");
-      var i;
+  document.addEventListener("DOMContentLoaded", function() {
+      var toggleButtons = document.getElementsByClassName("toggle-subcategories");
   
-      for (i = 0; i < categoryLinks.length; i++) {
-          categoryLinks[i].addEventListener("click", function () {
-              this.classList.toggle("active");
-              var subCategoryList = this.nextElementSibling;
-              if (subCategoryList.style.display === "block") {
-                  subCategoryList.style.display = "none";
-              } else {
+      for (var i = 0; i < toggleButtons.length; i++) {
+          toggleButtons[i].addEventListener("click", function() {
+              var categoryId = this.getAttribute("data-category-id");
+              var subCategoryList = document.getElementById("subcategories-" + categoryId);
+  
+              if (subCategoryList.style.display === "none") {
                   subCategoryList.style.display = "block";
+                  this.textContent = "Alt Kategorileri Gizle";
+              } else {
+                  subCategoryList.style.display = "none";
+                  this.textContent = "Alt Kategorileri Göster";
               }
-  
-              var chevronIcon = this.querySelector('i');
-              chevronIcon.classList.toggle('fa-chevron-down');
-              chevronIcon.classList.toggle('fa-chevron-right');
           });
       }
   
       var filterInput = document.getElementById("filter-input");
       var categoryItems = document.getElementsByClassName("category-item");
   
-      filterInput.addEventListener("input", function () {
+      filterInput.addEventListener("input", function() {
           var filterValue = this.value.toLowerCase();
   
           for (var i = 0; i < categoryItems.length; i++) {
@@ -238,7 +236,7 @@
           }
       });
   });
-  </script>  
+  </script>
 
     <!-- Footer Start -->
     {% include '_partials/_footer.html' %}

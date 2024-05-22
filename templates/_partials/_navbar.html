@@ -38,6 +38,7 @@
 .navbar-nav .btn-primary {
     transition: background-color 0.3s ease, color 0.3s ease;
     border-radius: 20px;
+    font-size: 0.9rem; /* Düğme boyutunu küçültmek için */
 }
 
 .navbar-nav .btn-primary:hover {
@@ -45,14 +46,24 @@
     color: #fff;
 }
 
-.form-control {
+.search-input {
     border-radius: 20px;
     padding-left: 20px;
     padding-right: 20px;
 }
 
+.search-button {
+    border-radius: 20px;
+    color: #cc0000; /* "Ara" yazısının rengi */
+    font-weight: bold;
+}
+
 .btn {
     border-radius: 20px;
+}
+
+.register-button {
+    font-size: 0.9rem; /* Düğme boyutunu küçültmek için */
 }
 </style>
 {% load static %}
@@ -97,13 +108,13 @@
                 {% endif %}
                 <li class="nav-item">
                     <form class="d-flex" method="get" action="{% url 'search_results' %}">
-                        <input class="form-control me-2" type="search" placeholder="Ara" aria-label="Ara" name="q" value="{{ request.GET.q }}">
-                        <button class="btn btn-outline-success" type="submit">Ara</button>
+                        <input class="form-control me-2 search-input" type="search" placeholder="Ara" aria-label="Ara" name="q" value="{{ request.GET.q }}">
+                        <button class="btn btn-outline-success search-button" type="submit">ARA</button>
                     </form>
                 </li>
                 {% if not request.user.is_authenticated %}
                     <li class="nav-item">
-                        <a href="{% url 'register' %}" class="btn btn-primary py-2 px-lg-3 ms-lg-3">
+                        <a href="{% url 'register' %}" class="btn btn-primary py-2 px-lg-3 ms-lg-3 register-button">
                             <i class="fa fa-user me-2"></i>Kayıt Ol<i class="fa fa-arrow-right ms-2"></i>
                         </a>
                     </li>

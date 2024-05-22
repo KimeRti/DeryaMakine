@@ -8,11 +8,16 @@ from django.db.models import Q
 def products_view(request, category_id=None):
     selected_category = None
     subcategories = []
+    products = []
+
     if category_id:
         selected_category = get_object_or_404(Category, id=category_id)
         subcategories = Category.objects.filter(parent=selected_category)
+        if not subcategories:
+            products = Product.objects.filter(category=selected_category)
+    else:
+        products = Product.objects.all()
 
-    products = Product.objects.all()
     categories = Category.objects.filter(status=True, parent=None).order_by('order')
     all_subcategories = {category.id: list(Category.objects.filter(parent=category).order_by('order').values('id', 'title')) for category in categories}
 

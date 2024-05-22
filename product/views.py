@@ -43,7 +43,7 @@ def products_view(request, category_id=None):
         'products': products,
         'categories': categories,
         'selected_category': selected_category,
-        'subcategories': subcategories,
+        'subcategories': subcategories if subcategories else None,
         'all_subcategories': json.dumps(all_subcategories),
         'query': query,
     }

@@ -206,7 +206,19 @@
               <span class="category-indicator"></span>
             </h2>
             <div class="product-list">
-              {% if products %}
+              {% if subcategories %}
+                {% for subcategory in subcategories %}
+                <div class="product-item">
+                  {% if subcategory.image %}
+                  <img src="{{ subcategory.image.url }}" alt="{{ subcategory.title }} Image" style="width: 250px; height: 250px;">
+                  {% endif %}
+                  <div class="product-info">
+                    <h3>{{ subcategory.title }}</h3>
+                    <a href="{{ subcategory.url }}" class="btn btn-primary">Detaylar</a>
+                  </div>
+                </div>
+                {% endfor %}
+              {% elif products %}
                 {% for product in products %}
                 <div class="product-item" data-category="Tüm Ürünler">
                   {% if product.image %}

@@ -4,6 +4,7 @@ from django.shortcuts import render, get_object_or_404
 
 def products_view(request, category_id=None):
     categories = Category.objects.filter(status=True, parent=None).order_by('order')
+    all_subcategories = {category.id: Category.objects.filter(parent=category) for category in categories}
     
     if category_id:
         selected_category = get_object_or_404(Category, id=category_id)
@@ -21,7 +22,8 @@ def products_view(request, category_id=None):
         "products": products,
         "categories": categories,
         "subcategories": subcategories,
-        "selected_category": selected_category
+        "selected_category": selected_category,
+        "all_subcategories": all_subcategories
     }
     return render(request, "products/products_1.html", data)
 

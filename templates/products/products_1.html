@@ -165,7 +165,7 @@
                 </button>
               </div>
               <ul class="sub-category-list" id="subcategories-{{ category.id }}">
-                {% for subcategory in Category.objects.filter(parent=category) %}
+                {% for subcategory in all_subcategories[category.id] %}
                 <li class="sub-category-item">
                   <a class="sub-category-link" href="#" data-category-id="{{ subcategory.id }}">
                     {{ subcategory.title }}

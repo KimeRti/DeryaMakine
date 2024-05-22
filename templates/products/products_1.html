@@ -75,7 +75,6 @@
           border-left: 2px solid #ccc;
       }
   </style>
-    </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
       
 
@@ -161,21 +160,7 @@
                 <a class="category-link" href="#" data-category-id="{{ category.id }}" style="flex-grow: 1;">
                   {{ category.title }}
                 </a>
-                <button class="toggle-subcategories" data-category-id="{{ category.id }}">
-                  <i class="fas fa-chevron-right"></i>
-                </button>
               </div>
-              <ul class="sub-category-list" id="subcategories-{{ category.id }}">
-                {% for subcategory in subcategories %}
-                {% if subcategory.parent == category %}
-                <li class="sub-category-item">
-                  <a class="sub-category-link" href="{% url 'products_by_category' subcategory.id %}">
-                    {{ subcategory.title }}
-                  </a>
-                </li>
-                {% endif %}
-                {% endfor %}
-              </ul>
             </li>
             {% endfor %}
           </ul>
@@ -189,7 +174,7 @@
             <h2>
               <span class="category-title">
                 {% if selected_category %}
-                {{ selected_category.title }} Ürünleri
+                {{ selected_category.title }}
                 {% else %}
                 Tüm Ürünler
                 {% endif %}
@@ -197,20 +182,34 @@
               <span class="category-indicator"></span>
             </h2>
             <div class="product-list">
-              {% for product in products %}
-              <div class="product-item" data-category="Tüm Ürünler">
-                {% if product.image %}
-                <img src="{{ product.image.url }}" alt="{{ product.title }} Image" style="width: 250px; height: 250px;">
-                {% else %}
-                <img src="{% static 'img/empty.jpg' %}" alt="Empty Image" style="max-width: 100%;">
-                {% endif %}
-                <div class="product-info">
-                  <h3>{{ product.title }}</h3>
-                  <p class="product-price">{{ product.price }}$</p>
-                  <a href="{% url 'productdetail' product.id %}" class="btn btn-primary">Detaylar</a>
+              {% if selected_category %}
+                {% for subcategory in subcategories %}
+                <div class="product-item">
+                  {% if subcategory.image %}
+                  <img src="{{ subcategory.image.url }}" alt="{{ subcategory.title }} Image" style="width: 250px; height: 250px;">
+                  {% endif %}
+                  <div class="product-info">
+                    <h3>{{ subcategory.title }}</h3>
+                    <a href="{% url 'products_by_category' subcategory.id %}" class="btn btn-primary">Detaylar</a>
+                  </div>
                 </div>
-              </div>
-              {% endfor %}
+                {% endfor %}
+              {% else %}
+                {% for product in products %}
+                <div class="product-item" data-category="Tüm Ürünler">
+                  {% if product.image %}
+                  <img src="{{ product.image.url }}" alt="{{ product.title }} Image" style="width: 250px; height: 250px;">
+                  {% else %}
+                  <img src="{% static 'img/empty.jpg' %}" alt="Empty Image" style="max-width: 100%;">
+                  {% endif %}
+                  <div class="product-info">
+                    <h3>{{ product.title }}</h3>
+                    <p class="product-price">{{ product.price }}$</p>
+                    <a href="{% url 'productdetail' product.id %}" class="btn btn-primary">Detaylar</a>
+                  </div>
+                </div>
+                {% endfor %}
+              {% endif %}
             </div>
           </div>
         </div>
@@ -225,34 +224,8 @@
           categoryLinks[i].addEventListener("click", function(event) {
             event.preventDefault(); // Sayfa yenilenmesini önler
             var categoryId = this.getAttribute("data-category-id");
-            var subCategoryList = document.getElementById("subcategories-" + categoryId);
-  
-            if (subCategoryList.style.display === "none" || subCategoryList.style.display === "") {
-              subCategoryList.style.display = "block";
-            } else {
-              subCategoryList.style.display = "none";
-            }
-          });
-        }
-  
-        var toggleButtons = document.getElementsByClassName("toggle-subcategories");
-  
-        for (var i = 0; i < toggleButtons.length; i++) {
-          toggleButtons[i].addEventListener("click", function(event) {
-            event.preventDefault(); // Sayfa yenilenmesini önler
-            var categoryId = this.getAttribute("data-category-id");
-            var subCategoryList = document.getElementById("subcategories-" + categoryId);
-            var icon = this.querySelector("i");
-  
-            if (subCategoryList.style.display === "none" || subCategoryList.style.display === "") {
-              subCategoryList.style.display = "block";
-              icon.classList.remove("fa-chevron-right");
-              icon.classList.add("fa-chevron-down");
-            } else {
-              subCategoryList.style.display = "none";
-              icon.classList.remove("fa-chevron-down");
-              icon.classList.add("fa-chevron-right");
-            }
+            var url = "{% url 'products_by_category' 'CATEGORY_ID_PLACEHOLDER' %}".replace("CATEGORY_ID_PLACEHOLDER", categoryId);
+            window.location.href = url;
           });
         }
   
@@ -276,6 +249,7 @@
         });
       });
     </script>
+  
 
     <!-- Footer Start -->
     {% include '_partials/_footer.html' %}

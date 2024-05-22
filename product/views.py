@@ -4,20 +4,21 @@ from django.shortcuts import render, get_object_or_404
 
 def products_view(request, category_id=None):
     categories = Category.objects.filter(status=True, parent=None).order_by('order')
-    subcategories = Category.objects.filter(status=True).exclude(parent=None).order_by('order')
     
     if category_id:
         selected_category = get_object_or_404(Category, id=category_id)
-        descendant_categories = selected_category.get_descendants()
-        products = Product.objects.filter(category__in=descendant_categories)
+        subcategories = Category.objects.filter(parent=selected_category)
+        products = []
     else:
+        selected_category = None
+        subcategories = []
         products = Product.objects.all()
     
     data = {
         "products": products,
         "categories": categories,
         "subcategories": subcategories,
-        "selected_category": selected_category if category_id else None
+        "selected_category": selected_category
     }
     return render(request, "products/products_1.html", data)
 

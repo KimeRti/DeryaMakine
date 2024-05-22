@@ -173,7 +173,7 @@
             {% for category in categories %}
             <li class="category-item">
               <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
-                <a class="category-link" href="{% url 'products_by_category' category.id %}" style="flex-grow: 1;">
+                <a class="category-link" data-category-id="{{ category.id }}" style="flex-grow: 1;">
                   {{ category.title }}
                 </a>
                 <button class="toggle-subcategories" data-category-id="{{ category.id }}">

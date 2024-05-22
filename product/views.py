@@ -3,6 +3,7 @@ from .models import Product, Category
 from django.shortcuts import render, get_object_or_404
 from django.core.serializers import serialize
 import json
+from django.db.models import Q
 
 def products_view(request, category_id=None):
     categories = Category.objects.filter(status=True, parent=None).order_by('order')  # Sıralama

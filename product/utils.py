@@ -1,6 +1,6 @@
 from PIL import Image, ImageEnhance
 
-def add_watermark(input_image_path, watermark_image_path, output_image_path, position, transparency=0.1):
+def add_watermark(input_image_path, watermark_image_path, output_image_path, position, transparency=0.5):
     base_image = Image.open(input_image_path).convert("RGBA")
     watermark = Image.open(watermark_image_path).convert("RGBA")
 
@@ -13,8 +13,10 @@ def add_watermark(input_image_path, watermark_image_path, output_image_path, pos
     watermark = watermark.resize(new_size, Image.ANTIALIAS)
 
     # Filigranı şeffaf hale getirin
-    enhancer = ImageEnhance.Brightness(watermark)
-    watermark = enhancer.enhance(transparency)
+    watermark = watermark.copy()
+    alpha = watermark.split()[3]
+    alpha = ImageEnhance.Brightness(alpha).enhance(transparency)
+    watermark.putalpha(alpha)
 
     # Filigranı taban görüntünün üzerine yerleştirin
     if position == 'center':

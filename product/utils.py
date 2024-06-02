@@ -2,13 +2,20 @@ import os
 from PIL import Image, ImageEnhance
 from django.conf import settings
 
-def resize_image(input_image_path, size=(300, 300)):
-    image = Image.open(input_image_path)
+def resize_and_center_image(input_image_path, output_image_path, size=(300, 300)):
+    image = Image.open(input_image_path).convert("RGBA")
     image.thumbnail(size, Image.ANTIALIAS)
-    return image
+    
+    # Yeni bir arka plan oluştur
+    background = Image.new('RGBA', size, (255, 255, 255, 0))
+    
+    # Orta pozisyonu hesapla
+    offset = ((size[0] - image.size[0]) // 2, (size[1] - image.size[1]) // 2)
+    background.paste(image, offset, mask=image)
+    background.save(output_image_path)
 
 def add_watermark(input_image_path, watermark_image_path, output_image_path, position, transparency=0.5, size=(300, 300)):
-    base_image = resize_image(input_image_path, size).convert("RGBA")
+    base_image = resize_and_center_image(input_image_path, output_image_path, size).convert("RGBA")
     watermark_image_full_path = os.path.join(settings.BASE_DIR, 'static', watermark_image_path)
     watermark = Image.open(watermark_image_full_path).convert("RGBA")
 

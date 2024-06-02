@@ -1,4 +1,4 @@
-from PIL import Image, ImageEnhance
+from PIL import Image,ImageEnhance
 
 def add_watermark(input_image_path, watermark_image_path, output_image_path, position, transparency=0.5):
     base_image = Image.open(input_image_path).convert("RGBA")
@@ -13,7 +13,6 @@ def add_watermark(input_image_path, watermark_image_path, output_image_path, pos
     watermark = watermark.resize(new_size, Image.ANTIALIAS)
 
     # Filigranı şeffaf hale getirin
-    watermark = watermark.copy()
     alpha = watermark.split()[3]
     alpha = ImageEnhance.Brightness(alpha).enhance(transparency)
     watermark.putalpha(alpha)
@@ -27,6 +26,6 @@ def add_watermark(input_image_path, watermark_image_path, output_image_path, pos
     transparent = Image.new('RGBA', (base_width, base_height), (0, 0, 0, 0))
     transparent.paste(base_image, (0, 0))
     transparent.paste(watermark, position, mask=watermark)
-    transparent = transparent.convert('RGB')  # Eğer PNG olarak kaydetmek isterseniz 'RGBA' olarak bırakın
+    transparent = transparent.convert('RGBA')  # PNG olarak kaydetmek için 'RGBA' olarak bırakın
 
     transparent.save(output_image_path)

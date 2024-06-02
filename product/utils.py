@@ -4,11 +4,14 @@ from django.conf import settings
 
 def resize_and_center_image(input_image_path, size=(300, 300)):
     image = Image.open(input_image_path).convert("RGBA")
-    image.thumbnail(size, Image.ANTIALIAS)
-    
+
+    # Kenarlardan boşlukları kırpma
+    bbox = image.getbbox()
+    image = image.crop(bbox)
+
     # Yeni bir arka plan oluştur
     background = Image.new('RGBA', size, (255, 255, 255, 0))
-    
+
     # Orta pozisyonu hesapla
     offset = ((size[0] - image.size[0]) // 2, (size[1] - image.size[1]) // 2)
     background.paste(image, offset, mask=image)

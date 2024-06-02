@@ -7,7 +7,8 @@ def resize_and_center_image(input_image_path, size=(300, 300)):
 
     # Kenarlardan boşlukları kırpma
     bbox = image.getbbox()
-    image = image.crop(bbox)
+    if bbox:
+        image = image.crop(bbox)
 
     # Yeni bir arka plan oluştur
     background = Image.new('RGBA', size, (255, 255, 255, 0))

@@ -1,96 +1,44 @@
-from django.db import models
-from django.db.models.signals import post_save
-from django.dispatch import receiver
-from .utils import add_watermark
+import os
+from PIL import Image, ImageEnhance
+from django.conf import settings
 
-class Category(models.Model):
-    parent = models.ForeignKey('self', blank=True, null=True, related_name='children', on_delete=models.CASCADE)
-    title = models.CharField(max_length=150)
-    keywords = models.CharField(max_length=255, blank=True)
-    description = models.CharField(max_length=255, blank=True)
-    image = models.ImageField(blank=True, upload_to='category')
-    slug = models.SlugField(max_length=160, unique=True)
-    status = models.BooleanField(default=True)
-    order = models.IntegerField(default=0)
-    create_at = models.DateTimeField(auto_now_add=True)
-    update_at = models.DateTimeField(auto_now=True)
+def resize_and_center_image(input_image_path, size=(300, 300)):
+    image = Image.open(input_image_path).convert("RGBA")
+    image.thumbnail(size, Image.ANTIALIAS)
 
-    class Meta:
-        unique_together = ('slug', 'parent',)
-        verbose_name_plural = 'categories'
-        ordering = ['order']
+    background = Image.new('RGBA', size, (255, 255, 255, 0))
 
-    def __str__(self):
-        full_path = [self.title]
-        k = self.parent
-        while k is not None:
-            full_path.append(k.title)
-            k = k.parent
-        return ' -> '.join(full_path[::-1])
-    
-    def get_descendants(self, include_self=True):
-        descendants = []
-        nodes = [self]
-        if include_self:
-            descendants.append(self)
-        while nodes:
-            node = nodes.pop(0)
-            children = list(node.children.all())
-            descendants.extend(children)
-            nodes.extend(children)
-        return descendants
+    offset = ((size[0] - image.size[0]) // 2, (size[1] - image.size[1]) // 2)
+    background.paste(image, offset, mask=image)
+    return background
 
+def add_watermark(input_image_path, watermark_image_path, output_image_path, position, transparency=0.5, size=(300, 300)):
+    base_image = resize_and_center_image(input_image_path, size).convert("RGBA")
+    watermark_image_full_path = os.path.join(settings.BASE_DIR, 'static', watermark_image_path)
+    watermark = Image.open(watermark_image_full_path).convert("RGBA")
 
-class Product(models.Model):
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    title = models.CharField(max_length=150, blank=True)
-    titleEN = models.CharField(max_length=150, blank=True)
-    keywords = models.CharField(max_length=255, blank=True)
-    description = models.CharField(max_length=255, blank=True)
-    image = models.ImageField(blank=True, null=True, upload_to='product')
-    price = models.FloatField()
-    amount = models.IntegerField()
-    status = models.BooleanField(default=True)
-    create_at = models.DateTimeField(auto_now_add=True)
-    update_at = models.DateTimeField(auto_now=True)
+    # Watermark'ın boyutlarını orantılı olarak küçültün (gerekirse)
+    watermark_width, watermark_height = watermark.size
+    base_width, base_height = base_image.size
 
-    def __str__(self):
-        return self.title
+    scale_factor = min(base_width / watermark_width, base_height / watermark_height) / 4  # Filigranı küçültme oranı
+    new_size = (int(watermark_width * scale_factor), int(watermark_height * scale_factor))
+    watermark = watermark.resize(new_size, Image.ANTIALIAS)
 
-    def get_cat_list(self):
-        k = self.category
-        breadcrumb = ["dummy"]
-        while k is not None:
-            breadcrumb.append(k.slug)
-            k = k.parent
+    # Filigranı şeffaf hale getirin
+    alpha = watermark.split()[3]
+    alpha = ImageEnhance.Brightness(alpha).enhance(transparency)
+    watermark.putalpha(alpha)
 
-            for i in range(len(breadcrumb) - 1):
-                breadcrumb[i] = '/'.join(breadcrumb[-1:i-1:-1])
-            return breadcrumb[-1:0:-1]
-    
-    def get_image_url(self):
-        return self.image.url
+    # Filigranı taban görüntünün üzerine yerleştirin
+    if position == 'center':
+        position = ((base_width - new_size[0]) // 2, (base_height - new_size[1]) // 2)
+    elif position == 'bottom_right':
+        position = (base_width - new_size[0], base_height - new_size[1])
 
+    transparent = Image.new('RGBA', (base_width, base_height), (0, 0, 0, 0))
+    transparent.paste(base_image, (0, 0))
+    transparent.paste(watermark, position, mask=watermark)
+    transparent = transparent.convert('RGBA')  # PNG olarak kaydetmek için 'RGBA' olarak bırakın
 
-class ProductImage(models.Model):
-    product = models.ForeignKey(Product, default=None, on_delete=models.CASCADE)
-    image = models.ImageField(blank=True, null=True, upload_to='product')
-    create_at = models.DateTimeField(auto_now_add=True)
-    update_at = models.DateTimeField(auto_now=True)
-
-
-@receiver(post_save, sender=Product)
-def add_watermark_to_product_image(sender, instance, **kwargs):
-    if instance.image:
-        input_image_path = instance.image.path
-        watermark_image_path = 'img/derya_logo.png'  # Filigran resminin yolu
-        output_image_path = instance.image.path  # Aynı dosyayı yeniden kaydediyoruz
-        add_watermark(input_image_path, watermark_image_path, output_image_path, 'center', transparency=0.5, size=(300, 300))
-
-@receiver(post_save, sender=ProductImage)
-def add_watermark_to_product_image(sender, instance, **kwargs):
-    if instance.image:
-        input_image_path = instance.image.path
-        watermark_image_path = 'img/derya_logo.png'  # Filigran resminin yolu
-        output_image_path = instance.image.path  # Aynı dosyayı yeniden kaydediyoruz
-        add_watermark(input_image_path, watermark_image_path, output_image_path, 'center', transparency=0.5, size=(300, 300))
+    transparent.save(output_image_path)

@@ -85,7 +85,7 @@ def add_watermark_to_product_image(sender, instance, **kwargs):
         input_image_path = instance.image.path
         watermark_image_path = 'static/img/derya_logo.png'  # Filigran resminin yolu
         output_image_path = instance.image.path  # Aynı dosyayı yeniden kaydediyoruz
-        add_watermark(input_image_path, watermark_image_path, output_image_path, 'bottom_right')
+        add_watermark(input_image_path, watermark_image_path, output_image_path, 'center', transparency=0.5)
 
 @receiver(post_save, sender=ProductImage)
 def add_watermark_to_product_image(sender, instance, **kwargs):
@@ -93,4 +93,4 @@ def add_watermark_to_product_image(sender, instance, **kwargs):
         input_image_path = instance.image.path
         watermark_image_path = 'static/img/derya_logo.png'  # Filigran resminin yolu
         output_image_path = instance.image.path  # Aynı dosyayı yeniden kaydediyoruz
-        add_watermark(input_image_path, watermark_image_path, output_image_path, 'bottom_right')
+        add_watermark(input_image_path, watermark_image_path, output_image_path, 'center', transparency=0.5)

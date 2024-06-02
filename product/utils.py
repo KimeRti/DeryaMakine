@@ -1,4 +1,5 @@
 from PIL import Image, ImageEnhance
+from django.templatetags.static import static
 
 def resize_image(input_image_path, size=(300, 300)):
     image = Image.open(input_image_path)
@@ -7,6 +8,7 @@ def resize_image(input_image_path, size=(300, 300)):
 
 def add_watermark(input_image_path, watermark_image_path, output_image_path, position, transparency=0.5, size=(300, 300)):
     base_image = resize_image(input_image_path, size).convert("RGBA")
+    watermark_image_path = static(watermark_image_path)
     watermark = Image.open(watermark_image_path).convert("RGBA")
 
     # Watermark'ın boyutlarını orantılı olarak küçültün (gerekirse)

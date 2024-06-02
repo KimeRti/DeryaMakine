@@ -1,6 +1,6 @@
 from PIL import Image, ImageEnhance
 
-def add_watermark(input_image_path, watermark_image_path, output_image_path, position, transparency=0.5):
+def add_watermark(input_image_path, watermark_image_path, output_image_path, position, transparency=0.1):
     base_image = Image.open(input_image_path).convert("RGBA")
     watermark = Image.open(watermark_image_path).convert("RGBA")
 

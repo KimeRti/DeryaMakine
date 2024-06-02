@@ -83,7 +83,7 @@ class ProductImage(models.Model):
 def add_watermark_to_product_image(sender, instance, **kwargs):
     if instance.image:
         input_image_path = instance.image.path
-        watermark_image_path = '/static/img/derya_logo.png'  # Filigran resminin yolu
+        watermark_image_path = 'static/img/derya_logo.png'  # Filigran resminin yolu
         output_image_path = instance.image.path  # Aynı dosyayı yeniden kaydediyoruz
         add_watermark(input_image_path, watermark_image_path, output_image_path, 'center', transparency=0.5, size=(300, 300))
 
@@ -91,6 +91,6 @@ def add_watermark_to_product_image(sender, instance, **kwargs):
 def add_watermark_to_product_image(sender, instance, **kwargs):
     if instance.image:
         input_image_path = instance.image.path
-        watermark_image_path = '/static/img/derya_logo.png'  # Filigran resminin yolu
+        watermark_image_path = 'static/img/derya_logo.png'  # Filigran resminin yolu
         output_image_path = instance.image.path  # Aynı dosyayı yeniden kaydediyoruz
         add_watermark(input_image_path, watermark_image_path, output_image_path, 'center', transparency=0.5, size=(300, 300))

@@ -1,5 +1,7 @@
 from django.db import models
-
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from .utils import add_watermark
 
 class Category(models.Model):
     parent = models.ForeignKey('self', blank=True, null=True, related_name='children', on_delete=models.CASCADE)
@@ -9,14 +11,14 @@ class Category(models.Model):
     image = models.ImageField(blank=True, upload_to='category')
     slug = models.SlugField(max_length=160, unique=True)
     status = models.BooleanField(default=True)
-    order = models.IntegerField(default=0)  # Sıralama için yeni alan
+    order = models.IntegerField(default=0)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         unique_together = ('slug', 'parent',)
         verbose_name_plural = 'categories'
-        ordering = ['order']  # Sıralama için
+        ordering = ['order']
 
     def __str__(self):
         full_path = [self.title]
@@ -39,10 +41,9 @@ class Category(models.Model):
         return descendants
 
 
-
 class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    title = models.CharField(max_length=150,blank=True)
+    title = models.CharField(max_length=150, blank=True)
     titleEN = models.CharField(max_length=150, blank=True)
     keywords = models.CharField(max_length=255, blank=True)
     description = models.CharField(max_length=255, blank=True)
@@ -63,10 +64,10 @@ class Product(models.Model):
             breadcrumb.append(k.slug)
             k = k.parent
 
-            for i in range(len(breadcrumb)-1):
+            for i in range(len(breadcrumb) - 1):
                 breadcrumb[i] = '/'.join(breadcrumb[-1:i-1:-1])
             return breadcrumb[-1:0:-1]
-        
+    
     def get_image_url(self):
         return self.image.url
 
@@ -78,5 +79,18 @@ class ProductImage(models.Model):
     update_at = models.DateTimeField(auto_now=True)
 
 
+@receiver(post_save, sender=Product)
+def add_watermark_to_product_image(sender, instance, **kwargs):
+    if instance.image:
+        input_image_path = instance.image.path
+        watermark_image_path = 'static/img/derya_logo.png'  # Filigran resminin yolu
+        output_image_path = instance.image.path  # Aynı dosyayı yeniden kaydediyoruz
+        add_watermark(input_image_path, watermark_image_path, output_image_path, 'bottom_right')
 
-
+@receiver(post_save, sender=ProductImage)
+def add_watermark_to_product_image(sender, instance, **kwargs):
+    if instance.image:
+        input_image_path = instance.image.path
+        watermark_image_path = 'static/img/derya_logo.png'  # Filigran resminin yolu
+        output_image_path = instance.image.path  # Aynı dosyayı yeniden kaydediyoruz
+        add_watermark(input_image_path, watermark_image_path, output_image_path, 'bottom_right')
